@@ -34,6 +34,6 @@ Route::delete('students/{id}', 'App\Http\Controllers\ApiController@deleteStudent
 //mine-mine
 Route::resource('users', App\Http\Controllers\APIController\UserController::class);
 Route::resource('admins', App\Http\Controllers\APIController\AdminController::class);
-Route::resource('instances', App\Http\Controllers\APIController\InstancecController::class);
+Route::resource('instances', App\Http\Controllers\APIController\InstanceController::class);
 Route::resource('installation_sch', App\Http\Controllers\APIController\InstallationScheduleController::class);
 //mine-mine
