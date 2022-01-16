@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Technician;
 
-class TechnicianController extends Controller
+class TechnitianController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class TechnicianController extends Controller
      */
     public function index()
     {
-        //
+        $technicians = Technician::get()->toJson(JSON_PRETTY_PRINT);
+        return response($technicians, 200);
     }
 
     /**
@@ -23,7 +25,7 @@ class TechnicianController extends Controller
      */
     public function create()
     {
-        //
+       //
     }
 
     /**
@@ -34,7 +36,17 @@ class TechnicianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $technician = new Technician;
+        $technician->id = $request->id;
+        $technician->id_technician = $request->id_technician;
+        $technician->name = $request->name;
+        $technician->no_tlpn = $request->no_tlpn;
+        $technician->status = $request->status;
+        $technician->save();
+
+        return response()->json([
+            "message" => "technician record created"
+        ], 200);
     }
 
     /**
@@ -45,7 +57,14 @@ class TechnicianController extends Controller
      */
     public function show($id)
     {
-        //
+        if (Technician::where('id', $id)->exists()) {
+            $technician = Technician::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($technician, 200);
+        } else {
+            return response()->json([
+                "message" => "Technician not found"
+            ], 404);
+        }
     }
 
     /**
@@ -68,7 +87,24 @@ class TechnicianController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (Technician::where('id', $id)->exists()) {
+            $technician =Technician::find($id);
+            // dd($request->name);
+            $technician->id = is_null($request->id) ? $technician->id : $request->id;
+            $technician->user_id = is_null($request->id_technician) ? $technician->id_technician : $request->id_technician;
+            $technician->name = is_null($request->name) ? $technician->name : $request->name;
+            $technician->no_tlpn = is_null($request->no_tlpn) ? $technician->no_tlpn : $request->no_tlpn;
+            $technician->status = is_null($request->status) ? $technician->status : $request->status;
+            $technician->save();
+
+            return response()->json([
+                "message" => "records updated successfully"
+            ], 200);
+        } else {
+            return response()->json([
+                "message" => "Technician not found"
+            ], 404);
+        }
     }
 
     /**
@@ -79,6 +115,18 @@ class TechnicianController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (Technician::where('id', $id)->exists()) {
+            $technician = Technician::find($id);
+            $technician->delete();
+
+            return response()->json([
+                "message" => "records deleted"
+            ], 202);
+        } else {
+            return response()->json([
+                "message" => "Technician not found"
+            ], 404);
+        }
+    
     }
 }
