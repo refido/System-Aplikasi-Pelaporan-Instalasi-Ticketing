@@ -30,3 +30,7 @@ Route::put('students/{id}', [ApiController::class,'updateStudents']);
 Route::put('students/{id}', 'App\Http\Controllers\ApiController@updateStudent');
 Route::delete('students/{id}', [ApiController::class,'deleteStudents']);
 Route::delete('students/{id}', 'App\Http\Controllers\ApiController@deleteStudent');
+
+Route::resource('technicians', App\Http\Controllers\APIController\TechnicianController::class);
+Route::resource('technician_instances', App\Http\Controllers\APIController\TechnicianInstanceController::class);
+Route::resource('ticketings', App\Http\Controllers\APIController\TicketingController::class);

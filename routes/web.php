@@ -27,3 +27,4 @@ Route::put('students/{id}', [ApiController::class,'updateStudents']);
 Route::put('students/{id}', 'App\Http\Controllers\ApiController@updateStudent');
 Route::delete('students/{id}', [ApiController::class,'deleteStudents']);
 Route::delete('students/{id}', 'App\Http\Controllers\ApiController@deleteStudent');
+
