@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\APIContoller;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Ticketing;
 
@@ -15,7 +16,7 @@ class TicketingController extends Controller
     public function index()
     {
         $ticketings = Ticketing::get()->toJson(JSON_PRETTY_PRINT);
-        return response( $ticketings, 200);
+        return response($ticketings, 200);
     }
 
     /**
@@ -37,17 +38,17 @@ class TicketingController extends Controller
     public function store(Request $request)
     {
         $ticketing = new Ticketing;
-       $ticketing->id = $request->id;
-       $ticketing->instance_id = $request->instance_id;
-       $ticketing->technician_id = $request->technician_id;
-       $ticketing->date_created = $request->date_created;
-       $ticketing->date_completed = $request->date_completed;
-       $ticketing->no_ticketing= $request->no_ticketing;
-       $ticketing->component_id = $request->component_id;
-       $ticketing->problem = $request->problem;
-       $ticketing->solving = $request->solving;
-       $ticketing->status = $request->status;
-       $ticketing->save();
+        $ticketing->id = $request->id;
+        $ticketing->instance_id = $request->instance_id;
+        $ticketing->technician_id = $request->technician_id;
+        $ticketing->date_created = $request->date_created;
+        $ticketing->date_completed = $request->date_completed;
+        $ticketing->no_ticketing = $request->no_ticketing;
+        $ticketing->component_id = $request->component_id;
+        $ticketing->problem = $request->problem;
+        $ticketing->solving = $request->solving;
+        $ticketing->status = $request->status;
+        $ticketing->save();
 
         return response()->json([
             "message" => "Ticketing record created"
@@ -93,7 +94,7 @@ class TicketingController extends Controller
     public function update(Request $request, $id)
     {
         if (Ticketing::where('id', $id)->exists()) {
-            $ticketing =Ticketing::find($id);
+            $ticketing = Ticketing::find($id);
             // dd($request->name);
             $ticketing->id = is_null($request->id) ? $ticketing->id : $request->id;
             $ticketing->instance_id = is_null($request->instance_id) ? $ticketing->instance_id : $request->instance_id;

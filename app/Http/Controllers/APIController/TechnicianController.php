@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\APIContoller;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\TechnicianInstanceSchedule;
-class TechnicianInstanceController extends Controller
+use App\Models\Technician;
+
+class TechnitianController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +15,8 @@ class TechnicianInstanceController extends Controller
      */
     public function index()
     {
-        $technician_instance_schedules = TechnicianInstanceSchedule::get()->toJson(JSON_PRETTY_PRINT);
-        return response( $technician_instance_schedules, 200);
+        $technicians = Technician::get()->toJson(JSON_PRETTY_PRINT);
+        return response($technicians, 200);
     }
 
     /**
@@ -35,14 +37,16 @@ class TechnicianInstanceController extends Controller
      */
     public function store(Request $request)
     {
-      $technician_instance_schedule = new TechnicianInstanceSchedule;
-      $technician_instance_schedule->id = $request->id;
-      $technician_instance_schedule->tecnician_id= $request->tecnician_id;
-      $technician_instance_schedule->schedule_id = $request->schedule_id;
-      $technician_instance_schedule->save();
+        $technician = new Technician;
+        $technician->id = $request->id;
+        $technician->id_technician = $request->id_technician;
+        $technician->name = $request->name;
+        $technician->no_tlpn = $request->no_tlpn;
+        $technician->status = $request->status;
+        $technician->save();
 
         return response()->json([
-            "message" => "Technician Instance Schedule record created"
+            "message" => "technician record created"
         ], 200);
     }
 
@@ -54,12 +58,12 @@ class TechnicianInstanceController extends Controller
      */
     public function show($id)
     {
-        if (TechnicianInstanceSchedule::where('id', $id)->exists()) {
-            $technician_instance_schedule = TechnicianInstanceSchedule::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($technician_instance_schedule, 200);
+        if (Technician::where('id', $id)->exists()) {
+            $technician = Technician::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($technician, 200);
         } else {
             return response()->json([
-                "message" => "TechnicianInstanceSchedule not found"
+                "message" => "Technician not found"
             ], 404);
         }
     }
@@ -84,13 +88,15 @@ class TechnicianInstanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (TechnicianInstanceSchedule::where('id', $id)->exists()) {
-            $technician_instance_schedule =TechnicianInstanceSchedule::find($id);
+        if (Technician::where('id', $id)->exists()) {
+            $technician = Technician::find($id);
             // dd($request->name);
-            $technician_instance_schedule->id = is_null($request->id) ? $technician_instance_schedule->id : $request->id;
-            $technician_instance_schedule->tecnician_id = is_null($request->tecnician_id) ? $technician_instance_schedule->tecnician_id : $request->tecnician_id;
-            $technician_instance_schedule->schedule_id = is_null($request->schedule_id) ? $technician_instance_schedule->schedule_id : $request->schedule_id;
-            $technician_instance_schedule->save();
+            $technician->id = is_null($request->id) ? $technician->id : $request->id;
+            $technician->user_id = is_null($request->id_technician) ? $technician->id_technician : $request->id_technician;
+            $technician->name = is_null($request->name) ? $technician->name : $request->name;
+            $technician->no_tlpn = is_null($request->no_tlpn) ? $technician->no_tlpn : $request->no_tlpn;
+            $technician->status = is_null($request->status) ? $technician->status : $request->status;
+            $technician->save();
 
             return response()->json([
                 "message" => "records updated successfully"
@@ -110,9 +116,9 @@ class TechnicianInstanceController extends Controller
      */
     public function destroy($id)
     {
-        if (TechnicianInstanceSchedule::where('id', $id)->exists()) {
-            $technician_instance_schedule = TechnicianInstanceSchedule::find($id);
-            $technician_instance_schedule->delete();
+        if (Technician::where('id', $id)->exists()) {
+            $technician = Technician::find($id);
+            $technician->delete();
 
             return response()->json([
                 "message" => "records deleted"
