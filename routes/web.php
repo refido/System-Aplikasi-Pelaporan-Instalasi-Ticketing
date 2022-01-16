@@ -22,6 +22,10 @@ Route::post('students', 'App\Http\Controllers\ApiController@createStudent');
 Route::put('students/{id}', 'App\Http\Controllers\ApiController@updateStudent');
 Route::delete('students/{id}', 'App\Http\Controllers\ApiController@deleteStudent');
 
+Route::resource('technicians', App\Http\Controllers\APIController\TechnicianController::class);
+Route::resource('technician_instances', App\Http\Controllers\APIController\TechnicianInstanceController::class);
+Route::resource('ticketings', App\Http\Controllers\APIController\TicketingController::class);
+
 Route::resource('managers', App\Http\Controllers\APIController\ManagerController::class);
 Route::resource('programmers', App\Http\Controllers\APIController\ProgrammerController::class);
 Route::resource('reportinstallations', App\Http\Controllers\APIController\ReportInstallationController::class);
