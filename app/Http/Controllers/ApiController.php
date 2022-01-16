@@ -41,7 +41,6 @@ class ApiController extends Controller
     {
         if (Student::where('id', $id)->exists()) {
             $student = Student::find($id);
-            // dd($request->name);
             $student->name = is_null($request->name) ? $student->name : $request->name;
             $student->course = is_null($request->course) ? $student->course : $request->course;
             $student->save();
