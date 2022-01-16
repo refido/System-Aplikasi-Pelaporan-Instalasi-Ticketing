@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\TechnicianInstanceSchedule;
 class TechnicianInstanceController extends Controller
 {
     /**
@@ -13,7 +13,8 @@ class TechnicianInstanceController extends Controller
      */
     public function index()
     {
-        //
+        $technician_instance_schedules = TechnicianInstanceSchedule::get()->toJson(JSON_PRETTY_PRINT);
+        return response( $technician_instance_schedules, 200);
     }
 
     /**
@@ -34,7 +35,15 @@ class TechnicianInstanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $technician_instance_schedule = new TechnicianInstanceSchedule;
+      $technician_instance_schedule->id = $request->id;
+      $technician_instance_schedule->tecnician_id= $request->tecnician_id;
+      $technician_instance_schedule->schedule_id = $request->schedule_id;
+      $technician_instance_schedule->save();
+
+        return response()->json([
+            "message" => "Technician Instance Schedule record created"
+        ], 200);
     }
 
     /**
@@ -45,7 +54,14 @@ class TechnicianInstanceController extends Controller
      */
     public function show($id)
     {
-        //
+        if (TechnicianInstanceSchedule::where('id', $id)->exists()) {
+            $technician_instance_schedule = TechnicianInstanceSchedule::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($technician_instance_schedule, 200);
+        } else {
+            return response()->json([
+                "message" => "TechnicianInstanceSchedule not found"
+            ], 404);
+        }
     }
 
     /**
@@ -68,7 +84,22 @@ class TechnicianInstanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (TechnicianInstanceSchedule::where('id', $id)->exists()) {
+            $technician_instance_schedule =TechnicianInstanceSchedule::find($id);
+            // dd($request->name);
+            $technician_instance_schedule->id = is_null($request->id) ? $technician_instance_schedule->id : $request->id;
+            $technician_instance_schedule->tecnician_id = is_null($request->tecnician_id) ? $technician_instance_schedule->tecnician_id : $request->tecnician_id;
+            $technician_instance_schedule->schedule_id = is_null($request->schedule_id) ? $technician_instance_schedule->schedule_id : $request->schedule_id;
+            $technician_instance_schedule->save();
+
+            return response()->json([
+                "message" => "records updated successfully"
+            ], 200);
+        } else {
+            return response()->json([
+                "message" => "Technician not found"
+            ], 404);
+        }
     }
 
     /**
@@ -79,6 +110,17 @@ class TechnicianInstanceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (TechnicianInstanceSchedule::where('id', $id)->exists()) {
+            $technician_instance_schedule = TechnicianInstanceSchedule::find($id);
+            $technician_instance_schedule->delete();
+
+            return response()->json([
+                "message" => "records deleted"
+            ], 202);
+        } else {
+            return response()->json([
+                "message" => "Technician not found"
+            ], 404);
+        }
     }
 }
