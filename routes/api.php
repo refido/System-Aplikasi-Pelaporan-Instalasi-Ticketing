@@ -20,12 +20,19 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-//myRoutes
+//exampleRoutes
 Route::get('students', 'App\Http\Controllers\ApiController@getAllStudents');
 Route::get('students/{id}', 'App\Http\Controllers\ApiController@getStudent');
 Route::post('students', 'App\Http\Controllers\ApiController@createStudent');
 Route::put('students/{id}', 'App\Http\Controllers\ApiController@updateStudent');
 Route::delete('students/{id}', 'App\Http\Controllers\ApiController@deleteStudent');
+//exampleRoutes
+
+//developmentRoutes
+Route::resource('users', App\Http\Controllers\APIController\UserController::class);
+Route::resource('admins', App\Http\Controllers\APIController\AdminController::class);
+Route::resource('instances', App\Http\Controllers\APIController\InstanceController::class);
+Route::resource('installation_sch', App\Http\Controllers\APIController\InstallationScheduleController::class);
 
 Route::resource('technicians', App\Http\Controllers\APIController\TechnicianController::class);
 Route::resource('technician_instances', App\Http\Controllers\APIController\TechnicianInstanceController::class);

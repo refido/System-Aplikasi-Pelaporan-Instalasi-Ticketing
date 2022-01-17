@@ -7,6 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class InstallationSchedule extends Model
 {
-    protected $table = 'installation_schedules';
-    protected $fillable = ['date_instalation','status'];
+    use HasFactory;
 }
