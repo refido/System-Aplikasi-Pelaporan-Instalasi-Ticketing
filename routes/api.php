@@ -42,3 +42,6 @@ Route::resource('managers', App\Http\Controllers\APIController\ManagerController
 Route::resource('programmers', App\Http\Controllers\APIController\ProgrammerController::class);
 Route::resource('reportinstallations', App\Http\Controllers\APIController\ReportInstallationController::class);
 Route::resource('repoertphotos', App\Http\Controllers\APIController\ReportPhotoController::class);
+
+Route::resource('categories',App\Http\Controllers\APIContoller\CategorieController::class);
+Route::resource('categories',App\Http\Controllers\APIContoller\ComponentController::class);
