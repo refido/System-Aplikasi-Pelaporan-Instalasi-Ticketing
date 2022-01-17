@@ -7,6 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Programmer extends Model
 {
-    protected $table = 'programmers';
-    protected $fillable = ['id_programmer','name', 'no_tlpn', 'status'];
+    use HasFactory;
 }

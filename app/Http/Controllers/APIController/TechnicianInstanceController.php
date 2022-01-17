@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\APIContoller;
+namespace App\Http\Controllers\APIController;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\TechnicianInstanceSchedule;
+use Illuminate\Http\Request;
 
 class TechnicianInstanceController extends Controller
 {
@@ -17,16 +17,6 @@ class TechnicianInstanceController extends Controller
     {
         $technician_instance_schedules = TechnicianInstanceSchedule::get()->toJson(JSON_PRETTY_PRINT);
         return response($technician_instance_schedules, 200);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -67,17 +57,6 @@ class TechnicianInstanceController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -88,7 +67,6 @@ class TechnicianInstanceController extends Controller
     {
         if (TechnicianInstanceSchedule::where('id', $id)->exists()) {
             $technician_instance_schedule = TechnicianInstanceSchedule::find($id);
-            // dd($request->name);
             $technician_instance_schedule->id = is_null($request->id) ? $technician_instance_schedule->id : $request->id;
             $technician_instance_schedule->tecnician_id = is_null($request->tecnician_id) ? $technician_instance_schedule->tecnician_id : $request->tecnician_id;
             $technician_instance_schedule->schedule_id = is_null($request->schedule_id) ? $technician_instance_schedule->schedule_id : $request->schedule_id;

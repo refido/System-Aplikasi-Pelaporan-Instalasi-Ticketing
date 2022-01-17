@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\APIContoller;
+namespace App\Http\Controllers\APIController;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Technician;
+use Illuminate\Http\Request;
 
-class TechnitianController extends Controller
+class TechnicianController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,16 +17,6 @@ class TechnitianController extends Controller
     {
         $technicians = Technician::get()->toJson(JSON_PRETTY_PRINT);
         return response($technicians, 200);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -69,17 +59,6 @@ class TechnitianController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -90,7 +69,6 @@ class TechnitianController extends Controller
     {
         if (Technician::where('id', $id)->exists()) {
             $technician = Technician::find($id);
-            // dd($request->name);
             $technician->id = is_null($request->id) ? $technician->id : $request->id;
             $technician->user_id = is_null($request->id_technician) ? $technician->id_technician : $request->id_technician;
             $technician->name = is_null($request->name) ? $technician->name : $request->name;

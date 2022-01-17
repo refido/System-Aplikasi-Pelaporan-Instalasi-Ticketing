@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\APIController;
 
 use App\Http\Controllers\Controller;
-use App\Models\Programmer;
+use App\Models\Component;
 use Illuminate\Http\Request;
 
-class ProgrammerController extends Controller
+class ComponentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class ProgrammerController extends Controller
      */
     public function index()
     {
-        $programmers = Programmer::get()->toJson(JSON_PRETTY_PRINT);
-        return response($programmers, 200);
+        $components = Component::get()->toJson(JSON_PRETTY_PRINT);
+        return response($components, 200);
     }
 
     /**
@@ -27,15 +27,13 @@ class ProgrammerController extends Controller
      */
     public function store(Request $request)
     {
-        $programmer = new Programmer;
-        $programmer->id_programmer = $request->id_programmer;
-        $programmer->name = $request->name;
-        $programmer->no_tlpn = $request->no_tlpn;
-        $programmer->status = $request->status;
-        $programmer->save();
+        $component = new Component;
+        $component->code = $request->code;
+        $component->name = $request->name;
+        $component->save();
 
         return response()->json([
-            "message" => "programmer record created"
+            "message" => "component record created"
         ], 200);
     }
 
@@ -47,12 +45,12 @@ class ProgrammerController extends Controller
      */
     public function show($id)
     {
-        if (Programmer::where('id', $id)->exists()) {
-            $programmer = Programmer::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($programmer, 200);
+        if (Component::where('id', $id)->exists()) {
+            $component = Component::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($component, 200);
         } else {
             return response()->json([
-                "message" => "Programmer not found"
+                "message" => "Component not found"
             ], 404);
         }
     }
@@ -66,20 +64,18 @@ class ProgrammerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (Programmer::where('id', $id)->exists()) {
-            $programmer = Programmer::find($id);
-            $programmer->id_programmer = is_null($request->id_programmer) ? $programmer->id_programmer : $request->id_programmer;
-            $programmer->name = is_null($request->name) ? $programmer->name : $request->name;
-            $programmer->no_tlpn = is_null($request->no_tlpn) ? $programmer->no_tlpn : $request->no_tlpn;
-            $programmer->status = is_null($request->status) ? $programmer->status : $request->status;
-            $programmer->save();
+        if (Component::where('id', $id)->exists()) {
+            $component = Component::find($id);
+            $component->code = is_null($request->code) ? $component->code : $request->code;
+            $component->name = is_null($request->name) ? $component->name : $request->name;
+            $component->save();
 
             return response()->json([
                 "message" => "records updated successfully"
             ], 200);
         } else {
             return response()->json([
-                "message" => "Programmer not found"
+                "message" => "Component not found"
             ], 404);
         }
     }
@@ -92,16 +88,16 @@ class ProgrammerController extends Controller
      */
     public function destroy($id)
     {
-        if (Programmer::where('id', $id)->exists()) {
-            $programmer = Programmer::find($id);
-            $programmer->delete();
+        if (Component::where('id', $id)->exists()) {
+            $component = Component::find($id);
+            $component->delete();
 
             return response()->json([
                 "message" => "records deleted"
             ], 202);
         } else {
             return response()->json([
-                "message" => "Programmer not found"
+                "message" => "Component not found"
             ], 404);
         }
     }
