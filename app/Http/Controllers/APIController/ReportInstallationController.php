@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\APIContoller;
+namespace App\Http\Controllers\APIController;
 
 use App\Http\Controllers\Controller;
 use App\Models\ReportInstallation;
@@ -17,16 +17,6 @@ class ReportInstallationController extends Controller
     {
         $reportInstallations = ReportInstallation::get()->toJson(JSON_PRETTY_PRINT);
         return response($reportInstallations, 200);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -68,17 +58,6 @@ class ReportInstallationController extends Controller
                 "message" => "ReportInstallation not found"
             ], 404);
         }
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**

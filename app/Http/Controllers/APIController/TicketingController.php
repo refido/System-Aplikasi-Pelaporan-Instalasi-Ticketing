@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\APIContoller;
+namespace App\Http\Controllers\APIController;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Ticketing;
+use Illuminate\Http\Request;
 
 class TicketingController extends Controller
 {
@@ -17,16 +17,6 @@ class TicketingController extends Controller
     {
         $ticketings = Ticketing::get()->toJson(JSON_PRETTY_PRINT);
         return response($ticketings, 200);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -74,17 +64,6 @@ class TicketingController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -95,7 +74,6 @@ class TicketingController extends Controller
     {
         if (Ticketing::where('id', $id)->exists()) {
             $ticketing = Ticketing::find($id);
-            // dd($request->name);
             $ticketing->id = is_null($request->id) ? $ticketing->id : $request->id;
             $ticketing->instance_id = is_null($request->instance_id) ? $ticketing->instance_id : $request->instance_id;
             $ticketing->technician_id = is_null($request->technician_id) ? $ticketing->technician_id : $request->technician_id;

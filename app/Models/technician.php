@@ -7,6 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Technician extends Model
 {
-    protected $table = 'technicians';
-    protected $fillable = ['name', 'no_tlpn','status'];
+    use HasFactory;
 }
