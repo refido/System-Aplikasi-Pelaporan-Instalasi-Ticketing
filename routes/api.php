@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ApiController;
+
+
 
 
 /*
@@ -19,21 +20,25 @@ use App\Http\Controllers\ApiController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-//myRoutes
-Route::get('students', [ApiController::class,'getAllStudents']);
+//exampleRoutes
 Route::get('students', 'App\Http\Controllers\ApiController@getAllStudents');
-Route::get('students/{id}', [ApiController::class,'getStudents']);
 Route::get('students/{id}', 'App\Http\Controllers\ApiController@getStudent');
-Route::post('students', [ApiController::class,'createStudents']);
 Route::post('students', 'App\Http\Controllers\ApiController@createStudent');
-Route::put('students/{id}', [ApiController::class,'updateStudents']);
 Route::put('students/{id}', 'App\Http\Controllers\ApiController@updateStudent');
-Route::delete('students/{id}', [ApiController::class,'deleteStudents']);
 Route::delete('students/{id}', 'App\Http\Controllers\ApiController@deleteStudent');
+//exampleRoutes
 
-//mine-mine
+//developmentRoutes
 Route::resource('users', App\Http\Controllers\APIController\UserController::class);
 Route::resource('admins', App\Http\Controllers\APIController\AdminController::class);
 Route::resource('instances', App\Http\Controllers\APIController\InstanceController::class);
 Route::resource('installation_sch', App\Http\Controllers\APIController\InstallationScheduleController::class);
-//mine-mine
+
+Route::resource('technicians', App\Http\Controllers\APIController\TechnicianController::class);
+Route::resource('technician_instances', App\Http\Controllers\APIController\TechnicianInstanceController::class);
+Route::resource('ticketings', App\Http\Controllers\APIController\TicketingController::class);
+
+Route::resource('managers', App\Http\Controllers\APIController\ManagerController::class);
+Route::resource('programmers', App\Http\Controllers\APIController\ProgrammerController::class);
+Route::resource('reportinstallations', App\Http\Controllers\APIController\ReportInstallationController::class);
+Route::resource('repoertphotos', App\Http\Controllers\APIController\ReportPhotoController::class);
