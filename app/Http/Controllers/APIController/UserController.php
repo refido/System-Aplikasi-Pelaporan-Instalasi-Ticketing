@@ -4,7 +4,8 @@ namespace App\Http\Controllers\APIController;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Admin;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -15,8 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $admins = Admin::get()->toJson(JSON_PRETTY_PRINT);
-        return response($admins, 200);
+        $data = User::get()->toJson(JSON_PRETTY_PRINT);
+        return response($data, 200);
     }
 
     /**
@@ -27,15 +28,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $admin = new Admin;
-        $admin->id_admin = $request->id_admin;
-        $admin->name = $request->name;
-        $admin->no_tlpn = $request->no_tlpn;
-        $admin->status = $request->status;
-        $admin->save();
+        $data = new User;
+        $data->role = $request->role;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->password = Hash::make($request->password);
+        $data->save();
 
         return response()->json([
-            "message" => "admin record created"
+            "message" => "user record created"
         ], 200);
     }
 
@@ -47,12 +48,12 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        if (Admin::where('id', $id)->exists()) {
-            $admin = Admin::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($admin, 200);
+        if (User::where('id', $id)->exists()) {
+            $data = User::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($data, 200);
         } else {
             return response()->json([
-                "message" => "Admin not found"
+                "message" => "user not found"
             ], 404);
         }
     }
@@ -66,22 +67,22 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (Admin::where('id', $id)->exists()) {
-            $admin = Admin::find($id);
+        if (User::where('id', $id)->exists()) {
+            $data = User::find($id);
             // dd($request->name);
 
-            $admin->id_admin = is_null($request->id_admin) ? $admin->id_admin : $request->id_admin;
-            $admin->name = is_null($request->name) ? $admin->name : $request->name;
-            $admin->no_tlpn = is_null($request->no_tlpn) ? $admin->no_tlpn : $request->no_tlpn;
-            $admin->status = is_null($request->status) ? $admin->status : $request->status;
-            $admin->save();
+            $data->role = is_null($request->role) ? $data->role : $request->role;
+            $data->name = is_null($request->name) ? $data->name : $request->name;
+            $data->email = is_null($request->email) ? $data->email : $request->email;
+            $data->password = is_null($request->password) ? $data->password : Hash::make($request->password);
+            $data->save();
 
             return response()->json([
                 "message" => "records updated successfully"
             ], 200);
         } else {
             return response()->json([
-                "message" => "Admin not found"
+                "message" => "user not found"
             ], 404);
         }
     }
@@ -94,16 +95,16 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        if (Admin::where('id', $id)->exists()) {
-            $admin = Admin::find($id);
-            $admin->delete();
+        if (User::where('id', $id)->exists()) {
+            $data = User::find($id);
+            $data->delete();
 
             return response()->json([
                 "message" => "records deleted"
             ], 202);
         } else {
             return response()->json([
-                "message" => "Admin not found"
+                "message" => "user not found"
             ], 404);
         }
     }
