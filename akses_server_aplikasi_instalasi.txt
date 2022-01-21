@@ -1,0 +1,20 @@
+Url Aplikasi : http://10.100.1.24/instalasi
+
+* Ketika akses ke http://10.100.1.24/instalasi maka akan tampil halaman frontend
+
+Untuk Upload Aplikasi Bisa Gunakan Fezila dengan akun :
+Host : 10.100.1.24 | User : instuser | password : Mendututara2021
+
+* Untuk webservice silakan upload di folder webservice , sehingga url dari webservice menjadi : 
+http://10.100.1.24/instalasi/webservice/api/
+
+* Semua file aplikasi di upload ke server tersebut , untuk menjalankan aplikasi laravel tanpa
+php artisan serve. 
+Di folder root buat file index.php dan isikan script berikut :
+<?php header('Location: public/');
+
+* akses DB untuk akses DB / import DB silakan gunakan aplikasi remoteDB (seperti HeidiSQL)
+masukan host : 10.100.1.24 | user : apps | password : Mendututara2021 
+dan gunakan Database : instalasi
+
+
