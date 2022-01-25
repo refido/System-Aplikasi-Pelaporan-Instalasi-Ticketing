@@ -67,7 +67,7 @@ class MainConversation extends Conversation
             'Anda memilih kategori ' . $kategori . '. Silahkan menjelaskan permasalahan yang dialami secara ringkas.',
             function (Answer $answer) {
                 $keluhan = $answer->getText();
-                $jawaban = sprintf("Permasalahan anda " . $keluhan . " akan di proses oleh teknisi. \r\t\n\n Mohon ditunggu dalam waktu 3x24jam, Terimakasih 😊.");
+                $jawaban = sprintf("Permasalahan anda '" . $keluhan . "' akan di proses oleh teknisi. \r\t\n\n Mohon ditunggu dalam waktu 3x24jam, Terimakasih 😊.");
                 $this->say($jawaban);
             }
         );
