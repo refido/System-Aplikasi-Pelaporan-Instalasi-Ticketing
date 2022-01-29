@@ -20,11 +20,20 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/tokens/create', function (Request $request) {
-    $token = $request->user()->createToken($request->token_name);
 
-    return ['token' => $token->plainTextToken];
+// AUTH ROUTES
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/me', function (Request $request) {
+        return auth()->user();
+    });
+
+    Route::post('/auth/logout', 'App\Http\Controllers\ApiController\AuthController@logout');
 });
+
+Route::post('/auth/login', 'App\Http\Controllers\ApiController\AuthController@login');
+Route::post('/auth/register', 'App\Http\Controllers\ApiController\AuthController@register');
+// AUTH ROUTES
+
 //exampleRoutes
 Route::get('students', 'App\Http\Controllers\ApiController@getAllStudents');
 Route::get('students/{id}', 'App\Http\Controllers\ApiController@getStudent');
