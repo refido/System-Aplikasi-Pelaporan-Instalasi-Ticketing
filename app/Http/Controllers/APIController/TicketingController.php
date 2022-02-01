@@ -32,7 +32,7 @@ class TicketingController extends Controller
         $ticketing->instance_id = $request->instance_id;
         $ticketing->technician_id = $request->technician_id;
         $ticketing->date_created = $request->date_created;
-        $ticketing->date_completed = $request->date_completed;
+        $ticketing->date_complete = $request->date_complete;
         $ticketing->no_ticketing = $request->no_ticketing;
         $ticketing->component_id = $request->component_id;
         $ticketing->problem = $request->problem;
