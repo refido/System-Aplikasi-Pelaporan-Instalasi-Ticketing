@@ -2,75 +2,121 @@
 
 namespace App\Conversations;
 
-use Illuminate\Foundation\Inspiring;
 use BotMan\BotMan\Messages\Incoming\Answer;
 use BotMan\BotMan\Messages\Outgoing\Question;
 use BotMan\BotMan\Messages\Outgoing\Actions\Button;
 use BotMan\BotMan\Messages\Conversations\Conversation;
-use BotMan\BotMan\Messages\Outgoing\Question as BotManQuestion;
-use BotMan\BotMan\Messages\Incoming\Answer as BotManAnswer;
-
+use App\Models\Ticketing;
+use App\Models\Instance;
+use App\Models\Component;
+use Illuminate\Support\Carbon;
+use Symfony\Component\Console\Question\Question as QuestionQuestion;
 
 class MainConversation extends Conversation
 {
-    protected $problem = 'jaringan';
+    protected $problem = '1';
+    protected $instance = 1;
+    protected $buttonArray = [];
     /**
      * First question
      */
-    public function askProblems()
+
+    public function askInstances()
     {
-        $question = Question::create("Silahkan pilih kategori permasalahan / aduan.")
+        $all = Instance::all()->toArray();
+        foreach ($all as $value) {
+            $button = Button::create($value['name'])->value($value['id']);
+            $buttonArray[] = $button;
+        }
+
+        $question = Question::create("Silahkan pilih instansi anda.")
             ->fallback('Unable to ask question')
             ->callbackId('ask_reason')
-            ->addButtons([
-                Button::create('Ticketing')->value('tiket'),
-                Button::create('Caller')->value('caller'),
-                Button::create('Siganage')->value('siganage'),
-                Button::create('Hardware')->value('hardware'),
-                Button::create('Jaringan')->value('jaringan'),
-            ]);
+            ->addButtons($buttonArray);
 
         return $this->ask($question, function (Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
-                switch ($answer->getValue()) {
-                    case 'tiket':
-                        $this->problem = 'tiket';
-                        $this->jawabanNya('Ticketing');
-                        break;
-                    case 'caller':
-                        $this->problem = 'caller';
-                        $this->jawabanNya('Caller');
-                        break;
-                    case 'siganage':
-                        $this->problem = 'siganage';
-                        $this->jawabanNya('Siganage');
-                        break;
-                    case 'hardware':
-                        $this->problem = 'hardware';
-                        $this->jawabanNya('Hardware');
-                        break;
-                    case 'jaringan':
-                        $this->problem = 'jaringan';
-                        $this->jawabanNya('Jaringan');
-                        break;
-                    default:
-                        # code...
-                        break;
+                $all = Instance::all()->toArray();
+                foreach ($all as $value) {
+                    switch ($answer->getValue()) {
+                        case $value['id']:
+                            $this->instance = $value['id'];
+                            $this->jawabanNyaInstances($value['name']);
+                            break;
+                    }
                 }
             }
         });
     }
 
-    public function jawabanNya($kategori)
+    public function askProblems()
+    {
+        $all = Component::all()->toArray();
+        foreach ($all as $value) {
+            $button = Button::create(@ucwords($value['name']))->value($value['id']);
+            $buttonArray[] = $button;
+        }
+
+        $question = Question::create("Silahkan pilih kategori permasalahan / aduan.")
+            ->fallback('Unable to ask question')
+            ->callbackId('ask_reason')
+            ->addButtons($buttonArray);
+
+        return $this->ask($question, function (Answer $answer) {
+            if ($answer->isInteractiveMessageReply()) {
+                $all = Component::all()->toArray();
+                foreach ($all as $value) {
+                    switch ($answer->getValue()) {
+                        case $value['id']:
+                            $this->problem = $value['id'];
+                            $this->jawabanNyaProblem($value['name']);
+                            break;
+                    }
+                }
+            }
+        });
+    }
+
+    public function jawabanNyaInstances($instansi)
+    {
+        $this->say('Instasi anda adalah <b>' . @ucwords($instansi).'</b>');
+        $this->askProblems();
+    }
+
+    public function jawabanNyaProblem($kategori)
     {
         $this->ask(
-            'Anda memilih kategori ' . $kategori . '. Silahkan menjelaskan permasalahan yang dialami secara ringkas.',
+            'Anda memilih kategori <b>' .@ucwords($kategori) . '.</b> Silahkan menjelaskan permasalahan yang dialami secara jelas dan ringkas.',
             function (Answer $answer) {
-                $keluhan = $answer->getText();
-                $jawaban = sprintf("Permasalahan anda '" . $keluhan . "' akan di proses oleh teknisi. \r\t\n\n Mohon ditunggu dalam waktu 3x24jam, Terimakasih 😊.");
+                if ($answer->getText() != '') {
+                    $this->keluhan = $answer->getText();
+                    $this->exit();
+                }
+                $jawaban = sprintf("Permasalahan anda <b>" . @ucwords($this->keluhan) . "</b> akan di proses oleh teknisi. \r\t\n\n Mohon ditunggu dalam waktu 3x24jam, Terimakasih 😊.");
                 $this->say($jawaban);
             }
         );
+    }
+
+    public function exit()
+    {
+        $get_dataku = Ticketing::orderby('id', 'desc')->first();
+        $full = explode("-", $get_dataku->no_ticketing);
+        $lastfix = 'TKT' . '-' . ((int)$full[1] + 1);
+        // $tkt = "TKT-0";
+        // echo ++$tkt;
+        $ticketing = new Ticketing;
+        $ticketing->instance_id = $this->instance;
+        $ticketing->technician_id = 0;
+        $ticketing->date_created = Carbon::now();
+        $ticketing->date_complete = null;
+        $ticketing->no_ticketing = $lastfix; //bug
+        $ticketing->component_id = $this->problem;
+        $ticketing->problem = $this->keluhan;
+        $ticketing->solving = null;
+        $ticketing->status = "Open";
+        $ticketing->save();
+        return true;
     }
 
     /**
@@ -78,6 +124,6 @@ class MainConversation extends Conversation
      */
     public function run()
     {
-        $this->askProblems();
+        $this->askInstances();
     }
 }
