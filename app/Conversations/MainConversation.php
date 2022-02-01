@@ -10,7 +10,6 @@ use App\Models\Ticketing;
 use App\Models\Instance;
 use App\Models\Component;
 use Illuminate\Support\Carbon;
-use Symfony\Component\Console\Question\Question as QuestionQuestion;
 
 class MainConversation extends Conversation
 {
@@ -79,21 +78,22 @@ class MainConversation extends Conversation
 
     public function jawabanNyaInstances($instansi)
     {
-        $this->say('Instasi anda adalah <b>' . @ucwords($instansi).'</b>');
+        $this->say('Instasi anda adalah <b>' . @ucwords($instansi) . '</b>', ['parse_mode' => 'HTML']);
         $this->askProblems();
     }
 
     public function jawabanNyaProblem($kategori)
     {
+        $this->say('Anda memilih kategori <b>' . @ucwords($kategori) . '.</b> ', ['parse_mode' => 'HTML']);
         $this->ask(
-            'Anda memilih kategori <b>' .@ucwords($kategori) . '.</b> Silahkan menjelaskan permasalahan yang dialami secara jelas dan ringkas.',
+            'Silahkan menjelaskan permasalahan yang dialami secara jelas dan ringkas.',
             function (Answer $answer) {
                 if ($answer->getText() != '') {
                     $this->keluhan = $answer->getText();
                     $this->exit();
                 }
                 $jawaban = sprintf("Permasalahan anda <b>" . @ucwords($this->keluhan) . "</b> akan di proses oleh teknisi. \r\t\n\n Mohon ditunggu dalam waktu 3x24jam, Terimakasih 😊.");
-                $this->say($jawaban);
+                $this->say($jawaban, ['parse_mode' => 'HTML']);
             }
         );
     }
@@ -103,14 +103,12 @@ class MainConversation extends Conversation
         $get_dataku = Ticketing::orderby('id', 'desc')->first();
         $full = explode("-", $get_dataku->no_ticketing);
         $lastfix = 'TKT' . '-' . ((int)$full[1] + 1);
-        // $tkt = "TKT-0";
-        // echo ++$tkt;
         $ticketing = new Ticketing;
         $ticketing->instance_id = $this->instance;
         $ticketing->technician_id = 0;
         $ticketing->date_created = Carbon::now();
         $ticketing->date_complete = null;
-        $ticketing->no_ticketing = $lastfix; //bug
+        $ticketing->no_ticketing = $lastfix;
         $ticketing->component_id = $this->problem;
         $ticketing->problem = $this->keluhan;
         $ticketing->solving = null;

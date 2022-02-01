@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use BotMan\BotMan\BotMan;
 use App\Conversations\MainConversation;
 use BotMan\BotMan\Cache\LaravelCache;
@@ -32,12 +31,6 @@ class BotManController extends Controller
             $bot->reply('Halloo! ' . $user->getFirstName() . ', Selamat datang di tiketing NakulaSadewa Telegram Bot!. ');
             $bot->startConversation(new MainConversation());
         })->stopsConversation();
-        
-        // $botman->hears('/report|report|lapor', function (BotMan $bot) {
-        //     $user = $bot->getUser();
-        //     $bot->reply('Halloo! ' . $user->getFirstName() . ', Selamat datang di tiketing NakulaSadewa Telegram Bot!. ');
-        //     $bot->startConversation(new MainConversation());
-        // })->stopsConversation();
 
         $botman->listen();
     }
