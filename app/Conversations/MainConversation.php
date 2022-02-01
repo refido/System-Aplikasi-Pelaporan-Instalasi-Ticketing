@@ -84,7 +84,7 @@ class MainConversation extends Conversation
 
     public function jawabanNyaProblem($kategori)
     {
-        $this->say('Anda memilih kategori <b>' . @ucwords($kategori) . '.</b> ', ['parse_mode' => 'HTML']);
+        $this->say('Anda memilih kategori <b>' . @ucwords($kategori) . '.</b>', ['parse_mode' => 'HTML']);
         $this->ask(
             'Silahkan menjelaskan permasalahan yang dialami secara jelas dan ringkas.',
             function (Answer $answer) {
@@ -94,6 +94,7 @@ class MainConversation extends Conversation
                 }
                 $jawaban = sprintf("Permasalahan anda <b>" . @ucwords($this->keluhan) . "</b> akan di proses oleh teknisi. \r\t\n\n Mohon ditunggu dalam waktu 3x24jam, Terimakasih 😊.");
                 $this->say($jawaban, ['parse_mode' => 'HTML']);
+                $this->say('Permasalahan anda telah terkirim silahkan ketik <b>start</b> atau <b>mulai</b> untuk melaporkan permasalahan lain.', ['parse_mode' => 'HTML']);
             }
         );
     }
