@@ -17,3 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle']);
+Route::get('/clear_cache', 'App\Http\Controllers\MyartisanController@clear_cache');
