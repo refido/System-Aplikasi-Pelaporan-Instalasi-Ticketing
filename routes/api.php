@@ -50,3 +50,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::post('/auth/logout', 'App\Http\Controllers\APIController\AuthController@logout');
 });
+
+Route::fallback(function () {
+    return response()->json(['error' => 'Wrong route. Check again!'], 404);
+});
