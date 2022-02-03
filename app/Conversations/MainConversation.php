@@ -93,9 +93,8 @@ class MainConversation extends Conversation
                     $this->keluhan = $answer->getText();
                     $this->exit();
                 }
-                $jawaban = sprintf("Permasalahan anda <b>" . @ucwords($this->keluhan) . "</b> akan di proses oleh teknisi. \r\t\n\n Mohon ditunggu dalam waktu 3x24jam, Terimakasih 😊.");
+                $jawaban = sprintf('No.Tiket <b>#' . $this->tkt . '</b>, Permasalahan anda <b>"' . @$this->keluhan . '"</b>. Anda akan di hubungi oleh teknisi kami untuk penanganan lebih lanjut. Terimakasih 😊.');
                 $this->say($jawaban, ['parse_mode' => 'HTML']);
-                $this->say("Nomor ticket anda adalah <b>" . $this->tkt. "</b>. Permasalahan anda telah terkirim silahkan ketik <b>start</b> atau <b>mulai</b> untuk melaporkan permasalahan lain.", ['parse_mode' => 'HTML']);
             }
         );
     }
