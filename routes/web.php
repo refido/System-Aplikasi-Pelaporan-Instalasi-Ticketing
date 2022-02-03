@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle']);
 Route::get('/clear_cache', 'App\Http\Controllers\MyartisanController@clear_cache');
+Route::get('/storage_link', 'App\Http\Controllers\MyartisanController@storage_link');
