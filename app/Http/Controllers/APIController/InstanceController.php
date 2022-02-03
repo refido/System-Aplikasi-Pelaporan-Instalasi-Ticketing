@@ -39,7 +39,7 @@ class InstanceController extends Controller
         $waktu = date('ymdhis');
         $name_file = $waktu . '_' . $request->file('image')->getClientOriginalName();
         $request->file('image')->storeAs(
-            'InstanceImages',
+            'Images',
             $name_file,
             'public'
         );
@@ -93,13 +93,13 @@ class InstanceController extends Controller
             // if (!empty($file)) {
 
             //     if (!empty($data->image)) {
-            //         Storage::disk('public')->delete('InstanceImages/' . $data->image);
+            //         Storage::disk('public')->delete('Images/' . $data->image);
             //     }
 
             //     $waktu = date('ymdhis');
             //     $name_file = $waktu . '_' . $request->file('image')->getClientOriginalName();
             //     $request->file('image')->storeAs(
-            //         'InstanceImages',
+            //         'Images',
             //         $name_file,
             //         'public'
             //     );
@@ -136,7 +136,7 @@ class InstanceController extends Controller
             $data = Instance::find($id);
 
             if (!@empty($data->image)) {
-                Storage::disk('public')->delete('InstanceImages/' . $data->image);
+                Storage::disk('public')->delete('Images/' . $data->image);
             }
 
             $data->delete();
@@ -170,13 +170,13 @@ class InstanceController extends Controller
             if (!empty($file)) {
 
                 if (!empty($data->image)) {
-                    Storage::disk('public')->delete('InstanceImages/' . $data->image);
+                    Storage::disk('public')->delete('Images/' . $data->image);
                 }
 
                 $waktu = date('ymdhis');
                 $name_file = $waktu . '_' . $request->file('image')->getClientOriginalName();
                 $request->file('image')->storeAs(
-                    'InstanceImages',
+                    'Images',
                     $name_file,
                     'public'
                 );
