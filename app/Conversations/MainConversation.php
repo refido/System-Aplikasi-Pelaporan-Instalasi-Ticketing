@@ -96,7 +96,6 @@ class MainConversation extends Conversation
                 $jawaban = sprintf("Permasalahan anda <b>" . @ucwords($this->keluhan) . "</b> akan di proses oleh teknisi. \r\t\n\n Mohon ditunggu dalam waktu 3x24jam, Terimakasih 😊.");
                 $this->say($jawaban, ['parse_mode' => 'HTML']);
                 $this->say("Nomor ticket anda adalah <b>" . $this->tkt. "</b>. Permasalahan anda telah terkirim silahkan ketik <b>start</b> atau <b>mulai</b> untuk melaporkan permasalahan lain.", ['parse_mode' => 'HTML']);
-                // $this->say('', ['parse_mode' => 'HTML']);
             }
         );
     }
