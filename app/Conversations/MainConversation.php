@@ -16,6 +16,7 @@ class MainConversation extends Conversation
     protected $problem = '1';
     protected $instance = 1;
     protected $buttonArray = [];
+    protected $tkt = '';
     /**
      * First question
      */
@@ -94,7 +95,8 @@ class MainConversation extends Conversation
                 }
                 $jawaban = sprintf("Permasalahan anda <b>" . @ucwords($this->keluhan) . "</b> akan di proses oleh teknisi. \r\t\n\n Mohon ditunggu dalam waktu 3x24jam, Terimakasih 😊.");
                 $this->say($jawaban, ['parse_mode' => 'HTML']);
-                $this->say('Permasalahan anda telah terkirim silahkan ketik <b>start</b> atau <b>mulai</b> untuk melaporkan permasalahan lain.', ['parse_mode' => 'HTML']);
+                $this->say("Nomor ticket anda adalah <b>" . $this->tkt. "</b>. Permasalahan anda telah terkirim silahkan ketik <b>start</b> atau <b>mulai</b> untuk melaporkan permasalahan lain.", ['parse_mode' => 'HTML']);
+                // $this->say('', ['parse_mode' => 'HTML']);
             }
         );
     }
@@ -115,6 +117,7 @@ class MainConversation extends Conversation
         $ticketing->solving = null;
         $ticketing->status = "Open";
         $ticketing->save();
+        $this->tkt = $lastfix;
         return true;
     }
 
