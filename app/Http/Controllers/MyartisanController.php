@@ -12,4 +12,10 @@ class MyartisanController extends Controller
         Artisan::call('optimize:clear');
         return 'Configuration cache cleared! <br> Configuration cached successfully!';
     }
+
+    public function storage_link()
+    {
+        Artisan::call('storage:link');
+        return 'Shortcut Linked!';
+    }
 }

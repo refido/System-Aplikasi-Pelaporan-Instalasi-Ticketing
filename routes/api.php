@@ -43,10 +43,12 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::resource('categories', App\Http\Controllers\APIController\CategorieController::class);
     Route::resource('components', App\Http\Controllers\APIController\ComponentController::class);
-
     Route::get('/me', function (Request $request) {
         return auth()->user();
     });
+
+    Route::post('/instances/update_instance', 'App\Http\Controllers\APIController\InstanceController@update_instance');
+    Route::post('/reportphotos/update_report_photo', 'App\Http\Controllers\APIController\ReportPhotoController@update_report_photo');
 
     Route::post('/auth/logout', 'App\Http\Controllers\APIController\AuthController@logout');
 });

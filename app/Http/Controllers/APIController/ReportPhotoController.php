@@ -5,6 +5,8 @@ namespace App\Http\Controllers\APIController;
 use App\Http\Controllers\Controller;
 use App\Models\ReportPhoto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class ReportPhotoController extends Controller
 {
