@@ -18,4 +18,4 @@ Here we are have some screenshot about how our web application works.
 
 This Project is our project during College Internship program,
 
-Special thanks addressed to BotMan and Laravel Sanctum.
+lib using BotMan and Laravel Sanctum.
