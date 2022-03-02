@@ -30,9 +30,11 @@ class InstallationScheduleController extends Controller
         $data = new InstallationSchedule;
         $data->code = $request->code;
         $data->number_of_technicians = $request->number_of_technicians;
-        $data->instance_id = $request->instance_id;
+        $data->category_instansi = $request->category_instansi;
         $data->technician_id = $request->technician_id;
         $data->date_instalation = $request->date_instalation;
+        $data->pic_name = $request->pic_name;
+        $data->pic_phone = $request->pic_phone;
         $data->status = $request->status;
         $data->save();
 
@@ -74,9 +76,11 @@ class InstallationScheduleController extends Controller
 
             $data->code = is_null($request->code) ? $data->code : $request->code;
             $data->number_of_technicians = is_null($request->number_of_technicians) ? $data->number_of_technicians : $request->number_of_technicians;
-            $data->instance_id = is_null($request->instance_id) ? $data->instance_id : $request->instance_id;
+            $data->category_instansi = is_null($request->category_instansi) ? $data->category_instansi : $request->category_instansi;
             $data->technician_id = is_null($request->technician_id) ? $data->technician_id : $request->technician_id;
             $data->date_instalation = is_null($request->date_instalation) ? $data->date_instalation : $request->date_instalation;
+            $data->pic_name = is_null($request->pic_name) ? $data->pic_name : $request->pic_name;
+            $data->pic_phone = is_null($request->pic_phone) ? $data->pic_phone : $request->pic_phone;
             $data->status = is_null($request->status) ? $data->status : $request->status;
             $data->save();
 

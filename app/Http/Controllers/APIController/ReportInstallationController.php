@@ -15,7 +15,10 @@ class ReportInstallationController extends Controller
      */
     public function index()
     {
-        $reportInstallations = ReportInstallation::get()->toJson(JSON_PRETTY_PRINT);
+        $reportInstallations = DB::table('report_installations')
+            ->leftJoin('installations', 'installations.id', '=', 'report_installations.installation_id')
+            ->get()
+            ->toJson(JSON_PRETTY_PRINT);
         return response($reportInstallations, 200);
     }
 
@@ -28,13 +31,16 @@ class ReportInstallationController extends Controller
     public function store(Request $request)
     {
         $reportInstallation = new ReportInstallation;
+        $reportInstallation->installation_id = $request->installation_id;
         $reportInstallation->start_installation = $request->start_installation;
         $reportInstallation->start_training = $request->start_training;
-        $reportInstallation->completed_training = $request->completed_training;
+        $reportInstallation->complete_training = $request->complete_training;
         $reportInstallation->completed_installation = $request->completed_installation;
-        $reportInstallation->component_id = $request->component_id;
+        $reportInstallation->condition = $request->condition;
+        $reportInstallation->problem = $request->problem;
+        $reportInstallation->video = $request->video;
         $reportInstallation->status = $request->status;
-        $reportInstallation->jumlah_caller = $request->jumlah_caller;
+        $reportInstallation->anydesk_id = $request->anydesk_id;
         $reportInstallation->save();
 
         return response()->json([
@@ -51,7 +57,9 @@ class ReportInstallationController extends Controller
     public function show($id)
     {
         if (ReportInstallation::where('id', $id)->exists()) {
-            $reportInstallation = ReportInstallation::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            $reportInstallation = DB::table('report_installations')
+                ->leftJoin('installations', 'installations.id', '=', 'report_installations.installation_id')
+                ->where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
             return response($reportInstallation, 200);
         } else {
             return response()->json([
@@ -71,13 +79,16 @@ class ReportInstallationController extends Controller
     {
         if (ReportInstallation::where('id', $id)->exists()) {
             $reportInstallation = ReportInstallation::find($id);
+            $reportInstallation->installation_id = is_null($request->installation_id) ? $reportInstallation->installation_id : $request->installation_id;
             $reportInstallation->start_installation = is_null($request->start_installation) ? $reportInstallation->start_installation : $request->start_installation;
             $reportInstallation->start_training = is_null($request->start_training) ? $reportInstallation->start_training : $request->start_training;
-            $reportInstallation->completed_training = is_null($request->completed_training) ? $reportInstallation->completed_training : $request->completed_training;
+            $reportInstallation->complete_training = is_null($request->complete_training) ? $reportInstallation->complete_training : $request->complete_training;
             $reportInstallation->completed_installation = is_null($request->completed_installation) ? $reportInstallation->completed_installation : $request->completed_installation;
-            $reportInstallation->component_id = is_null($request->component_id) ? $reportInstallation->component_id : $request->component_id;
+            $reportInstallation->condition = is_null($request->condition) ? $reportInstallation->condition : $request->condition;
+            $reportInstallation->problem = is_null($request->problem) ? $reportInstallation->problem : $request->problem;
+            $reportInstallation->video = is_null($request->video) ? $reportInstallation->video : $request->video;
             $reportInstallation->status = is_null($request->status) ? $reportInstallation->status : $request->status;
-            $reportInstallation->jumlah_caller = is_null($request->jumlah_caller) ? $reportInstallation->jumlah_caller : $request->jumlah_caller;
+            $reportInstallation->anydesk_id = is_null($request->anydesk_id) ? $reportInstallation->anydesk_id : $request->anydesk_id;
             $reportInstallation->save();
 
             return response()->json([

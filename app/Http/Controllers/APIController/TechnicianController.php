@@ -28,7 +28,7 @@ class TechnicianController extends Controller
     public function store(Request $request)
     {
         $technician = new Technician;
-        $technician->id = $request->id;
+        // $technician->id = $request->id;
         $technician->id_technician = $request->id_technician;
         $technician->name = $request->name;
         $technician->no_tlpn = $request->no_tlpn;
