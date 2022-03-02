@@ -40,6 +40,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('technicians', App\Http\Controllers\APIController\TechnicianController::class);
     Route::resource('technician_instances', App\Http\Controllers\APIController\TechnicianInstanceController::class);
     Route::resource('ticketings', App\Http\Controllers\APIController\TicketingController::class);
+    Route::resource('ticket_solves', App\Http\Controllers\APIController\TicketSolveController::class);
+    Route::resource('technician_installations', App\Http\Controllers\APIController\TechnicianInstallationController::class);
 
     Route::resource('categories', App\Http\Controllers\APIController\CategorieController::class);
     Route::resource('components', App\Http\Controllers\APIController\ComponentController::class);

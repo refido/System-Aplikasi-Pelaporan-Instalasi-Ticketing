@@ -15,7 +15,11 @@ class TicketingController extends Controller
      */
     public function index()
     {
-        $ticketings = Ticketing::get()->toJson(JSON_PRETTY_PRINT);
+        $ticketings = DB::table('ticketings')
+            ->select('ticketings.*', 'components.name as name_components')
+            ->leftJoin('components', 'components.id', '=', 'ticketings.component_id')
+            ->get()
+            ->toJson(JSON_PRETTY_PRINT);
         return response($ticketings, 200);
     }
 
@@ -54,7 +58,10 @@ class TicketingController extends Controller
     public function show($id)
     {
         if (Ticketing::where('id', $id)->exists()) {
-            $ticketing = Ticketing::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            $ticketing = DB::table('ticketings')
+                ->select('ticketings.*', 'components.name as name_components')
+                ->leftJoin('components', 'components.id', '=', 'ticketings.component_id')
+                ->where('ticketings.id', $id)->get()->toJson(JSON_PRETTY_PRINT);
             return response($ticketing, 200);
         } else {
             return response()->json([
