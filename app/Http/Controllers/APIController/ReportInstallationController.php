@@ -15,7 +15,10 @@ class ReportInstallationController extends Controller
      */
     public function index()
     {
-        $reportInstallations = ReportInstallation::get()->toJson(JSON_PRETTY_PRINT);
+        $reportInstallations = DB::table('report_installations')
+            ->leftJoin('installations', 'installations.id', '=', 'report_installations.installation_id')
+            ->get()
+            ->toJson(JSON_PRETTY_PRINT);
         return response($reportInstallations, 200);
     }
 
@@ -28,6 +31,7 @@ class ReportInstallationController extends Controller
     public function store(Request $request)
     {
         $reportInstallation = new ReportInstallation;
+        $reportInstallation->installation_id = $request->installation_id;
         $reportInstallation->start_installation = $request->start_installation;
         $reportInstallation->start_training = $request->start_training;
         $reportInstallation->complete_training = $request->complete_training;
@@ -53,7 +57,9 @@ class ReportInstallationController extends Controller
     public function show($id)
     {
         if (ReportInstallation::where('id', $id)->exists()) {
-            $reportInstallation = ReportInstallation::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            $reportInstallation = DB::table('report_installations')
+                ->leftJoin('installations', 'installations.id', '=', 'report_installations.installation_id')
+                ->where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
             return response($reportInstallation, 200);
         } else {
             return response()->json([
@@ -73,6 +79,7 @@ class ReportInstallationController extends Controller
     {
         if (ReportInstallation::where('id', $id)->exists()) {
             $reportInstallation = ReportInstallation::find($id);
+            $reportInstallation->installation_id = is_null($request->installation_id) ? $reportInstallation->installation_id : $request->installation_id;
             $reportInstallation->start_installation = is_null($request->start_installation) ? $reportInstallation->start_installation : $request->start_installation;
             $reportInstallation->start_training = is_null($request->start_training) ? $reportInstallation->start_training : $request->start_training;
             $reportInstallation->complete_training = is_null($request->complete_training) ? $reportInstallation->complete_training : $request->complete_training;
