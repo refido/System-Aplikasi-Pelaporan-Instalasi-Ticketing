@@ -7,14 +7,12 @@ use BotMan\BotMan\Messages\Outgoing\Question;
 use BotMan\BotMan\Messages\Outgoing\Actions\Button;
 use BotMan\BotMan\Messages\Conversations\Conversation;
 use App\Models\Ticketing;
-use App\Models\Instance;
 use App\Models\Component;
 use Illuminate\Support\Carbon;
 
 class MainConversation extends Conversation
 {
     protected $problem = '1';
-    protected $instance = 1;
     protected $buttonArray = [];
     protected $tkt = '';
     /**
@@ -23,30 +21,44 @@ class MainConversation extends Conversation
 
     public function askInstances()
     {
-        $all = Instance::all()->toArray();
-        foreach ($all as $value) {
-            $button = Button::create($value['name'])->value($value['id']);
-            $buttonArray[] = $button;
-        }
 
-        $question = Question::create("Silahkan pilih instansi anda.")
+        $question = Question::create("Silahkan masukkan nama instansi anda.")
             ->fallback('Unable to ask question')
-            ->callbackId('ask_reason')
-            ->addButtons($buttonArray);
+            ->callbackId('ask_reason');
 
         return $this->ask($question, function (Answer $answer) {
-            if ($answer->isInteractiveMessageReply()) {
-                $all = Instance::all()->toArray();
-                foreach ($all as $value) {
-                    switch ($answer->getValue()) {
-                        case $value['id']:
-                            $this->instance = $value['id'];
-                            $this->jawabanNyaInstances($value['name']);
-                            break;
-                    }
-                }
+            if ($answer->getText() != '') {
+                $this->instance = $answer->getText();
             }
+            $this->jawabanNyaInstances($answer);
         });
+    }
+
+    public function jawabanNyaInstances($instansi)
+    {
+        $this->say('Instasi anda adalah <b>' . @ucwords($instansi) . '</b>', ['parse_mode' => 'HTML']);
+        $this->askAddress();
+    }
+
+    public function askAddress()
+    {
+
+        $question = Question::create("Silahkan masukkan alamat instansi anda.")
+            ->fallback('Unable to ask question')
+            ->callbackId('ask_reason');
+
+        return $this->ask($question, function (Answer $answer) {
+            if ($answer->getText() != '') {
+                $this->address = $answer->getText();
+            }
+            $this->jawabanNyaAddress($answer);
+        });
+    }
+
+    public function jawabanNyaAddress($address)
+    {
+        $this->say('Alamat instasi anda adalah <b>' . @ucwords($address) . '</b>', ['parse_mode' => 'HTML']);
+        $this->askProblems();
     }
 
     public function askProblems()
@@ -77,12 +89,6 @@ class MainConversation extends Conversation
         });
     }
 
-    public function jawabanNyaInstances($instansi)
-    {
-        $this->say('Instasi anda adalah <b>' . @ucwords($instansi) . '</b>', ['parse_mode' => 'HTML']);
-        $this->askProblems();
-    }
-
     public function jawabanNyaProblem($kategori)
     {
         $this->say('Anda memilih kategori <b>' . @ucwords($kategori) . '.</b>', ['parse_mode' => 'HTML']);
@@ -105,14 +111,13 @@ class MainConversation extends Conversation
         $full = explode("-", $get_dataku->no_ticketing);
         $lastfix = 'TKT' . '-' . ((int)$full[1] + 1);
         $ticketing = new Ticketing;
-        $ticketing->instance_id = $this->instance;
-        $ticketing->technician_id = 0;
+        $ticketing->instance_name = $this->instance;
+        $ticketing->address = $this->address;
         $ticketing->date_created = Carbon::now();
         $ticketing->date_complete = null;
         $ticketing->no_ticketing = $lastfix;
         $ticketing->component_id = $this->problem;
         $ticketing->problem = $this->keluhan;
-        $ticketing->solving = null;
         $ticketing->status = "Open";
         $ticketing->save();
         $this->tkt = $lastfix;
