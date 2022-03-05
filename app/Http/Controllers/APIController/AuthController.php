@@ -12,14 +12,14 @@ use App\Traits\ApiResponser;
 class AuthController extends Controller
 {
     use ApiResponser;
-    
+
     public function register(Request $request)
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'role' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
+            'password' => 'required|string|min:3',
         ]);
 
         $user = User::create([
@@ -38,9 +38,9 @@ class AuthController extends Controller
     {
         $attr = $request->validate([
             'email' => 'required|string|email|',
-            'password' => 'required|string|min:6'
+            'password' => 'required|string|min:3'
         ]);
-        
+
 
         if (!Auth::attempt($attr)) {
             return $this->error('Credentials not match', 401);
