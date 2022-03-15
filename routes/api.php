@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('users', App\Http\Controllers\APIController\UserController::class);
     Route::resource('admins', App\Http\Controllers\APIController\AdminController::class);
     Route::resource('instances', App\Http\Controllers\APIController\InstanceController::class);
-    Route::resource('installations', App\Http\Controllers\APIController\InstallationController::class);
+    Route::resource('installations', App\Http\Controllers\APIController\Installation::class);
 
     Route::resource('managers', App\Http\Controllers\APIController\ManagerController::class);
     Route::resource('programmers', App\Http\Controllers\APIController\ProgrammerController::class);

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\InstallationSchedule;
 
-class InstallationScheduleController extends Controller
+class Installation extends Controller
 {
     /**
      * Display a listing of the resource.
