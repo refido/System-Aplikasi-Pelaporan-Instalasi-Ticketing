@@ -17,7 +17,7 @@ class InstallationController extends Controller
     public function index()
     {
         $data = DB::table('installations')
-            ->select('installations.*', 'technicians.name', 'technicians.no_telpn', 'technicians.status')
+            ->select('installations.*', 'technicians.name', 'technicians.no_tlpn', 'technicians.status')
             ->leftJoin('technicians', 'technicians.id_technician', '=', 'installations.technician_id')
             ->get()
             ->toJson(JSON_PRETTY_PRINT);
@@ -58,7 +58,7 @@ class InstallationController extends Controller
     {
         if (Installation::where('id', $id)->exists()) {
             $data = DB::table('installations')
-                ->select('installations.*', 'technicians.name', 'technicians.no_telpn', 'technicians.status')
+                ->select('installations.*', 'technicians.name', 'technicians.no_tlpn', 'technicians.status')
                 ->leftJoin('technicians', 'technicians.id_technician', '=', 'installations.technician_id')
                 ->where('installations.id', $id)->get()->toJson(JSON_PRETTY_PRINT);
             return response($data, 200);
