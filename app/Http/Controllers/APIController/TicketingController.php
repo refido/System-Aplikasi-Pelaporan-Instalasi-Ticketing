@@ -17,8 +17,9 @@ class TicketingController extends Controller
     public function index()
     {
         $ticketings = DB::table('ticketings')
-            ->select('ticketings.*', 'components.name as name_components')
+            ->select('ticketings.*', 'components.name as name_components', 'components.code', 'ticket_solves.client_name', 'ticket_solves.problem', 'ticket_solves.solving')
             ->leftJoin('components', 'components.id', '=', 'ticketings.component_id')
+            ->leftJoin('ticket_solves', 'ticket_solves.no_ticketing', '=', 'ticketings.no_ticketing')
             ->get()
             ->toJson(JSON_PRETTY_PRINT);
         return response($ticketings, 200);
@@ -60,8 +61,9 @@ class TicketingController extends Controller
     {
         if (Ticketing::where('id', $id)->exists()) {
             $ticketing = DB::table('ticketings')
-                ->select('ticketings.*', 'components.name as name_components')
+                ->select('ticketings.*', 'components.name as name_components', 'components.code', 'ticket_solves.client_name', 'ticket_solves.problem', 'ticket_solves.solving')
                 ->leftJoin('components', 'components.id', '=', 'ticketings.component_id')
+                ->leftJoin('ticket_solves', 'ticket_solves.no_ticketing', '=', 'ticketings.no_ticketing')
                 ->where('ticketings.id', $id)->get()->toJson(JSON_PRETTY_PRINT);
             return response($ticketing, 200);
         } else {
