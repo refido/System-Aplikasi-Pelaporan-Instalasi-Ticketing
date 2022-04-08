@@ -4,9 +4,9 @@ namespace App\Http\Controllers\APIController;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\InstallationSchedule;
+use App\Models\Installation;
 
-class InstallationScheduleController extends Controller
+class InstallationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class InstallationScheduleController extends Controller
      */
     public function index()
     {
-        $data = InstallationSchedule::get()->toJson(JSON_PRETTY_PRINT);
+        $data = Installation::get()->toJson(JSON_PRETTY_PRINT);
         return response($data, 200);
     }
 
@@ -27,7 +27,7 @@ class InstallationScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new InstallationSchedule;
+        $data = new Installation;
         $data->code = $request->code;
         $data->number_of_technicians = $request->number_of_technicians;
         $data->category_instansi = $request->category_instansi;
@@ -51,8 +51,8 @@ class InstallationScheduleController extends Controller
      */
     public function show($id)
     {
-        if (InstallationSchedule::where('id', $id)->exists()) {
-            $data = InstallationSchedule::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+        if (Installation::where('id', $id)->exists()) {
+            $data = Installation::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
             return response($data, 200);
         } else {
             return response()->json([
@@ -70,8 +70,8 @@ class InstallationScheduleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (InstallationSchedule::where('id', $id)->exists()) {
-            $data = InstallationSchedule::find($id);
+        if (Installation::where('id', $id)->exists()) {
+            $data = Installation::find($id);
             // dd($request->name);
 
             $data->code = is_null($request->code) ? $data->code : $request->code;
@@ -102,8 +102,8 @@ class InstallationScheduleController extends Controller
      */
     public function destroy($id)
     {
-        if (InstallationSchedule::where('id', $id)->exists()) {
-            $data = InstallationSchedule::find($id);
+        if (Installation::where('id', $id)->exists()) {
+            $data = Installation::find($id);
             $data->delete();
 
             return response()->json([

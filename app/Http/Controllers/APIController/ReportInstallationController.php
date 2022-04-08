@@ -5,6 +5,7 @@ namespace App\Http\Controllers\APIController;
 use App\Http\Controllers\Controller;
 use App\Models\ReportInstallation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReportInstallationController extends Controller
 {

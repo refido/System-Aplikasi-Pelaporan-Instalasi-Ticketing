@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class InstallationSchedule extends Model
+class Installation extends Model
 {
     use HasFactory;
 }

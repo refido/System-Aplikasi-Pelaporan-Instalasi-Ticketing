@@ -5,6 +5,7 @@ namespace App\Http\Controllers\APIController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TechnicianInstallation;
+use Illuminate\Support\Facades\DB;
 
 class TechnicianInstallationController extends Controller
 {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\APIController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TicketSolve;
+use Illuminate\Support\Facades\DB;
 
 class TicketSolveController extends Controller
 {

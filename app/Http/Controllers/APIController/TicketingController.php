@@ -5,6 +5,7 @@ namespace App\Http\Controllers\APIController;
 use App\Http\Controllers\Controller;
 use App\Models\Ticketing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TicketingController extends Controller
 {
