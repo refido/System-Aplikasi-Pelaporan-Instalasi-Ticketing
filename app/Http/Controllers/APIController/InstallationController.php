@@ -5,6 +5,7 @@ namespace App\Http\Controllers\APIController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Installation;
+use Illuminate\Support\Facades\DB;
 
 class InstallationController extends Controller
 {
@@ -15,7 +16,11 @@ class InstallationController extends Controller
      */
     public function index()
     {
-        $data = Installation::get()->toJson(JSON_PRETTY_PRINT);
+        $data = DB::table('installation')
+            ->select('installation.*', 'technicians.name', 'technicians.no_telpn', 'technicians.status')
+            ->leftJoin('technicians', 'technicians.id_technician', '=', 'installation.technician_id')
+            ->get()
+            ->toJson(JSON_PRETTY_PRINT);
         return response($data, 200);
     }
 
@@ -52,7 +57,10 @@ class InstallationController extends Controller
     public function show($id)
     {
         if (Installation::where('id', $id)->exists()) {
-            $data = Installation::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            $data = DB::table('installation')
+                ->select('installation.*', 'technicians.name', 'technicians.no_telpn', 'technicians.status')
+                ->leftJoin('technicians', 'technicians.id_technician', '=', 'installation.technician_id')
+                ->where('installation.id', $id)->get()->toJson(JSON_PRETTY_PRINT);
             return response($data, 200);
         } else {
             return response()->json([
