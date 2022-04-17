@@ -36,16 +36,16 @@ Here we are have some screenshot about how our web application works.
 
 - Inserting multiple image
 
-  ![image]<img src="/image_read/insertmultiple.png" title="Screenshot 1"/>
+  <img src="/image_read/insertmultiple.png" title="Screenshot 1"/>
 
 - Failed if user unauthenticated
 
-  ![image]<img src="/image_read/failedunauthenticated.png" title="Screenshot 2"/>
+  <img src="/image_read/failedunauthenticated.png" title="Screenshot 2"/>
 
 - Success if user is authenticated
 
-  ![image]<img src="/image_read/reportphotosuccess.png" title="Screenshot 3"/>
+  <img src="/image_read/reportphotosuccess.png" title="Screenshot 3"/>
 
 - Telegram bot (intended for user complaints)
 
-  ![image]<img src="/image_read/chatbot.png" title="Screenshot 4"/>
+  <img src="/image_read/chatbot.png" title="Screenshot 4"/>
