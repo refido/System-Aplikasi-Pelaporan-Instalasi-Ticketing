@@ -6,4 +6,4 @@ Proyek ini adalah proyek kami selama program Magang Perguruan Tinggi di CV Nakul
 Proyek mencakup webservice, website, dan mobile app.
 Terimakasih untuk CV Nakula Sadewa telah memberikan kesempatan untuk magang ❤.
 
-**Untuk selanjutnya penjelasan cara installasi dan penggunaannya dapat di lihat di masing masing branch.**
+**Untuk selanjutnya penjelasan cara installasi dan penggunaannya dapat di lihat di masing-masing branch.**
