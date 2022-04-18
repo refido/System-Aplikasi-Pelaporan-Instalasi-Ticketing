@@ -33,7 +33,7 @@ kami menggunakan BotMan dan Laravel Sanctum sebagai lib.
 
 5. Lakukan integrasi dari aplikasi dengan telegram.
   
-  <img src="/image_read/setwebhook.png" title="Screenshot 5"/>
+  <img src="/image_read/setwebhook.jpeg" title="Screenshot 5"/>
 
 6. Selesai.
 
@@ -49,6 +49,7 @@ kami menggunakan BotMan dan Laravel Sanctum sebagai lib.
 ## RESOURCE ROUTE (POST,PUT,GET,DELETE)
   
   *BAWA HEADER Authorization*
+    
     ```
     /users
     /admins
