@@ -1,7 +1,7 @@
 # Ticketing API BOT
-This Project is our project during College Internship program.
+Proyek ini adalah proyek kami selama program Magang Perguruan Tinggi.
 
-we are using BotMan and Laravel Sanctum as the lib.
+kami menggunakan BotMan dan Laravel Sanctum sebagai lib.
 # Table of contents
 
 - [Installation](#installation)
@@ -14,38 +14,48 @@ we are using BotMan and Laravel Sanctum as the lib.
 
 1. Install php (disarankan menggunakan, version >= 7.3).
 2. Clone repo ini.
-3. Install library dari botman untuk bot telegram.
+3. Install library yang dibutuhkan dan mendapakat key
 
+    ```json
+    composer install
+    php artisan key:generate
     ```
+
+4. Install library dari botman untuk bot telegram.
+
+    ```json
     composer require botman/botman
     composer require botman/driver-web
     composer require botman/driver-telegram
     ```
 
-4. ???
+5. Lakukan integrasi dari aplikasi dengan telegram.
+  
+  <img src="/image_read/setwebhook.png" title="Screenshot 5"/>
 
-5. Profit?
-
+6. Selesai.
 # Usage
 
 [(Back to top)](#table-of-contents)
 
-Here we are have some screenshot about how our web application works.
+Di sini kami memiliki beberapa tangkapan layar tentang cara kerja aplikasi web kami.
+Untuk test API bisa menggunakan postman.
+Untuk menggunakan bot, bisa mengetik '/start, start, atau mulai'.
 
 ### 📸
 
-- Inserting multiple image
+- Menyisipkan banyak gambar
 
   <img src="/image_read/insertmultiple.png" title="Screenshot 1"/>
 
-- Failed if user unauthenticated
+- Gagal jika pengguna tidak diautentikasi
 
   <img src="/image_read/failedunauthenticated.png" title="Screenshot 2"/>
 
-- Success if user is authenticated
+- Berhasil jika pengguna diautentikasi
 
   <img src="/image_read/reportphotosuccess.png" title="Screenshot 3"/>
 
-- Telegram bot (intended for user complaints)
+- Bot Telegram (ditujukan untuk keluhan pengguna)
 
   <img src="/image_read/chatbot.png" title="Screenshot 4"/>
