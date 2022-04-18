@@ -1,12 +1,14 @@
 # Ticketing API BOT
+
 Proyek ini adalah proyek kami selama program Magang Perguruan Tinggi.
 
 kami menggunakan BotMan dan Laravel Sanctum sebagai lib.
+
 # Table of contents
 
 - [Installation](#installation)
+- [RouteList](#routelist)
 - [Usage](#usage)
- 
 
 # Installation
 
@@ -34,6 +36,47 @@ kami menggunakan BotMan dan Laravel Sanctum sebagai lib.
   <img src="/image_read/setwebhook.png" title="Screenshot 5"/>
 
 6. Selesai.
+
+# RouteList
+
+## AUTH ROUTES
+
+    ``` 
+    /auth/login
+    /auth/register
+    ```
+
+## RESOURCE ROUTE (POST,PUT,GET,DELETE)
+  
+  *BAWA HEADER Authorization*
+    ```
+    /users
+    /admins
+    /instances
+    /installations
+    /managers
+    /programmers
+    /report_installations
+    /report_photos
+    /report_components
+    /technicians
+    /technician_instances
+    /ticketings
+    /ticket_solves
+    /technician_installations
+    /categories
+    /components
+    /me
+    ```
+
+## ROUTES HANYA POST UNTUK GAMBAR DAN LOGOUT
+
+    ```
+    /instances/update_instance
+    /reportphotos/update_report_photo
+    /auth/logout
+    ```
+
 # Usage
 
 [(Back to top)](#table-of-contents)
