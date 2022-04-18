@@ -16,19 +16,19 @@ kami menggunakan BotMan dan Laravel Sanctum sebagai lib.
 
 1. Install php (disarankan menggunakan, version >= 7.3).
 2. Clone repo ini.
-3. Install library yang dibutuhkan dan mendapakat key
-
-    ```json
-    composer install
-    php artisan key:generate
-    ```
-
-4. Install library dari botman untuk bot telegram.
+3. Install library dari botman untuk bot telegram.
 
     ```json
     composer require botman/botman
     composer require botman/driver-web
     composer require botman/driver-telegram
+    ```
+
+4. Install library yang dibutuhkan dan mendapakat key
+
+    ```json
+    composer install
+    php artisan key:generate
     ```
 
 5. Lakukan integrasi dari aplikasi dengan telegram.
@@ -38,19 +38,19 @@ kami menggunakan BotMan dan Laravel Sanctum sebagai lib.
 6. Selesai.
 
 # RouteList
+[(Back to top)](#table-of-contents)
 
 ## AUTH ROUTES
 
-    ``` 
+    ```json
     /auth/login
     /auth/register
     ```
 
 ## RESOURCE ROUTE (POST,PUT,GET,DELETE)
   
-  *BAWA HEADER Authorization*
-    
-    ```
+  **BAWA HEADER Authorization**    
+    ```json
     /users
     /admins
     /instances
@@ -72,7 +72,7 @@ kami menggunakan BotMan dan Laravel Sanctum sebagai lib.
 
 ## ROUTES HANYA POST UNTUK GAMBAR DAN LOGOUT
 
-    ```
+    ```json
     /instances/update_instance
     /reportphotos/update_report_photo
     /auth/logout
@@ -103,3 +103,8 @@ Untuk menggunakan bot, bisa mengetik '/start, start, atau mulai'.
 - Bot Telegram (ditujukan untuk keluhan pengguna)
 
   <img src="/image_read/chatbot.png" title="Screenshot 4"/>
+
+# CONTRIBUTOR
+  -Evina08
+  -daffavcd
+  -refido
