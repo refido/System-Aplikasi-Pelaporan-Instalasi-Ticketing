@@ -106,6 +106,9 @@ Untuk menggunakan bot, bisa mengetik '/start, start, atau mulai'.
   <img src="/image_read/chatbot.png" title="Screenshot 4"/>
 
 # CONTRIBUTOR
-  -Evina08
-  -daffavcd
-  -refido
+
+- Evina Dinda Syawalia
+
+- M. Daffa Athallah Rifqi
+
+- Refido Berliano Hartawan
