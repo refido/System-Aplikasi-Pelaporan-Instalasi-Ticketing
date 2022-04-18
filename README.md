@@ -42,41 +42,42 @@ kami menggunakan BotMan dan Laravel Sanctum sebagai lib.
 
 ## AUTH ROUTES
 
-    ```json
-    /auth/login
-    /auth/register
-    ```
+```json
+/auth/login
+/auth/register
+```
 
 ## RESOURCE ROUTE (POST,PUT,GET,DELETE)
-  
-  **BAWA HEADER Authorization**    
-    ```json
-    /users
-    /admins
-    /instances
-    /installations
-    /managers
-    /programmers
-    /report_installations
-    /report_photos
-    /report_components
-    /technicians
-    /technician_instances
-    /ticketings
-    /ticket_solves
-    /technician_installations
-    /categories
-    /components
-    /me
-    ```
+
+*Note **BAWA HEADER Authorization**
+
+```json
+/users
+/admins
+/instances
+/installations
+/managers
+/programmers
+/report_installations
+/report_photos
+/report_components
+/technicians
+/technician_instances
+/ticketings
+/ticket_solves
+/technician_installations
+/categories
+/components
+/me
+```
 
 ## ROUTES HANYA POST UNTUK GAMBAR DAN LOGOUT
 
-    ```json
-    /instances/update_instance
-    /reportphotos/update_report_photo
-    /auth/logout
-    ```
+```json
+/instances/update_instance
+/reportphotos/update_report_photo
+/auth/logout
+```
 
 # Usage
 
