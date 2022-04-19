@@ -17,7 +17,7 @@
     <link href="assets/plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
 
     <!--venobox lightbox-->
-    <link rel="stylesheet" href="assets/plugins/magnific-popup/dist/magnific-popup.css"/>
+    <link rel="stylesheet" href="assets/plugins/magnific-popup/dist/magnific-popup.css" />
 
     <!-- App CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -77,7 +77,7 @@
 
 
         <!-- ========== Left Sidebar Start ========== -->
-        @include('fix.sidebar')
+        @include('teknisi.sbteknisi')
         <!-- Left Sidebar End -->
 
 
@@ -92,21 +92,44 @@
                     <div class="row">
                         <div class="col-sm-11 ">
                             <div class="m-b-30">
-                                <a href="/viewlapinteknisi" type="button" class="btn btn-primary"><i class="fa fa-back"> </i>
+                                <a href="/viewlapinteknisi" type="button" class="btn btn-primary"><i class="fa fa-back">
+                                    </i>
                                     Back</a>
                             </div>
                             <div class="card-box task-detail col-sm-offset-1">
-
+                                
                                 <div class="row">
-                                    <ul class="list-inline task-dates m-b-0 m-t-20 col-sm-offset-2">
+                                    <ul class="list-inline task-dates col-sm-offset-2">
+                                        <li>
+                                        <h5 class="font-600 m-b-10 ">Nama Leader</h5>
+                                            <p>Jefri Al Berto</p>
+                                            <br><br>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <ul class="list-inline task-dates col-sm-offset-2">
+                                        <li>
+                                            <h5 class="font-600 m-b-5">Nama Instansi</h5>
+                                            <p> Haruka Persada </p>
+                                        </li>
+
+                                        <li>
+                                            <h5 class="font-600 m-b-5">Kategori Instansi</h5>
+                                            <p> {{@$data[0]['category_instansi']}}</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <ul class="list-inline task-dates col-sm-offset-2">
                                         <li>
                                             <h5 class="font-600 m-b-5">Tanggal Mulai Instalasi</h5>
-                                            <p> 22 March 2016 <small class="text-muted">1:00 PM</small></p>
+                                            <p> {{@$data[0]['start_installation']}} </p>
                                         </li>
 
                                         <li>
                                             <h5 class="font-600 m-b-5">Tanggal Selesai Instalasi</h5>
-                                            <p> 17 April 2016 <small class="text-muted">12:00 PM</small></p>
+                                            <p> {{@$data[0]['completed_installation']}}</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -114,17 +137,48 @@
                                     <ul class="list-inline task-dates m-b-0 m-t-20 col-sm-offset-2">
                                         <li>
                                             <h5 class="font-600 m-b-5">Tanggal Mulai Training</h5>
-                                            <p> 22 March 2016 <small class="text-muted">1:00 PM</small></p>
+                                            <p>{{@$data[0]['start_training']}}</p>
                                         </li>
 
                                         <li>
                                             <h5 class="font-600 m-b-5">Tanggal Selesai Instalasi</h5>
-                                            <p> 17 April 2016 <small class="text-muted">12:00 PM</small></p>
+                                            <p>{{@$data[0]['complete_training']}}</p>
                                         </li>
                                     </ul>
                                 </div><!-- end row -->
                                 <div class="clearfix"></div>
-                                <br><hr>
+                                <br>
+                                <hr>
+
+                                <div class="row">
+                                    <div class="col-md-10 ">
+                                        <div class="pull-left m-t-30 col-sm-offset-2">
+                                        <h5 class="font-600 m-b-5">Anydesk ID</h5>
+                                            <p>{{@$data[0]['anydesk_id']}}</p><br>
+                                        </div>
+                                        <div class="pull-left m-t-30 col-sm-offset-3">
+                                        <h5 class="font-600 m-b-5">IP Address</h5>
+                                            <p>202.189.87.220</p>
+                                        </div>
+                                        <div class="pull-right m-t-30 sm-offset-2">
+                                        <h5 class="font-600 m-b-5">Lisensi</h5>
+                                            <p>Full</p><br>
+                                        </div>
+                                    </div><!-- end col -->
+                                </div>
+                                <div class="row">
+                                    <ul class="list-inline task-dates col-sm-offset-2">
+                                        <li>
+                                            <h5 class="font-600 m-b-5">Jumlah Caller</h5>
+                                            <p>2</p>
+                                        </li>
+
+                                        <li>
+                                            <h5 class="font-600 m-b-5">Jenis Caller</h5>
+                                            <p>Device</p>
+                                        </li>
+                                    </ul>
+                                </div>
 
                                 <!-- Komponen -->
                                 <div class="task-tags m-t-20">
@@ -139,77 +193,57 @@
 
                                 <!-- kondisi -->
                                 <h5 class="font-600 m-b-20 ">Kondisi Sistem Antrian</h5>
-                                <p class="text-muted">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, illo, iste
-                                    itaque voluptas corrupti ratione reprehenderit magni similique? Tempore, quos
-                                    delectus asperiores libero voluptas quod perferendis! Voluptate, quod illo
-                                    rerum? Lorem ipsum dolor sit amet.
-                                </p>
-                                <p class="text-muted">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, illo, iste
-                                    itaque voluptas corrupti ratione reprehenderit magni similique? Tempore, quos
-                                    delectus asperiores libero voluptas quod perferendis! Voluptate, quod illo
-                                    rerum? Lorem ipsum dolor sit amet.
-                                </p>
+                                <p>{{@$data[0]['condition']}}</p>
                                 <br><br>
 
                                 <!-- problem -->
                                 <h5 class="font-600 m-b-20">Problem Instalasi</h5>
                                 <p class="text-muted">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, illo, iste
-                                    itaque voluptas corrupti ratione reprehenderit magni similique? Tempore, quos
-                                    delectus asperiores libero voluptas quod perferendis! Voluptate, quod illo
-                                    rerum? Lorem ipsum dolor sit amet.
-                                </p>
-                                <p class="text-muted">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, illo, iste
-                                    itaque voluptas corrupti ratione reprehenderit magni similique? Tempore, quos
-                                    delectus asperiores libero voluptas quod perferendis! Voluptate, quod illo
-                                    rerum? Lorem ipsum dolor sit amet.
+                                    {{@$data[0]['problem']}}
                                 </p>
                                 <br>
-                                
+
                                 <!-- attach -->
                                 <div class="portfolioContainer">
                                     <div class="attached-files m-t-30 ">
                                         <h5 class="font-600">Bukti Foto </h5>
                                         <div class="files-list">
                                             <div class="file-box">
-                                                <a href="assets/images/gallery/1.jpg" class="image-popup"
+                                                <a href="/assets/images/attached-files/img-2.jpg" class="image-popup"
                                                     title="Foto-1">
-                                                    <img src="assets/images/gallery/1.jpg" class="thumb-img"
+                                                    <img src="/assets/images/attached-files/img-2.jpg" class="thumb-img"
                                                         alt="work-thumbnail">
                                                 </a>
                                                 <p class="font-13 m-b-5 text-muted"><small></small></p>
                                             </div>
                                             <div class="file-box">
-                                                <a href="assets/images/attached-files/img-2.jpg" class="image-popup"
+                                                <a href="/assets/images/attached-files/img.jpg" class="image-popup"
                                                     title="Foto-2">
-                                                    <img src="assets/images/attached-files/img-2.jpg" class="thumb-img"
+                                                    <img src="/assets/images/attached-files/img.jpg" class="thumb-img"
                                                         alt="work-thumbnail">
                                                 </a>
                                                 <p class="font-13 m-b-5 text-muted"><small></small></p>
                                             </div>
                                             <div class="file-box">
-                                                <a href="assets/images/attached-files/img-1.jpg" class="image-popup"
+                                                <a href="assets/images/attached-files/img-3.jpg" class="image-popup"
                                                     title="Foto-3">
-                                                    <img src="assets/images/attached-files/img-1.jpg" class="thumb-img"
+                                                    <img src="/assets/images/attached-files/img-3.jpg" class="thumb-img"
                                                         alt="work-thumbnail">
                                                 </a>
                                                 <p class="font-13 m-b-5 text-muted"><small></small></p>
                                             </div>
                                             <div class="file-box">
-                                                <a href="assets/images/attached-files/img-2.jpg" class="image-popup"
+                                                <a href="/assets/images/attached-files/img-2.jpg" class="image-popup"
                                                     title="Foto-4">
-                                                    <img src="assets/images/attached-files/img-2.jpg" class="thumb-img"
+                                                    <img src="/assets/images/attached-files/img-2.jpg" class="thumb-img"
                                                         alt="work-thumbnail">
                                                 </a>
                                                 <p class="font-13 m-b-5 text-muted"><small></small></p>
                                             </div>
                                             <div class="file-box">
-                                                <a href="assets/images/attached-files/img-3.png" class="image-popup"
+                                                <a href="/assets/images/attached-files/img-3.png" class="image-popup"
                                                     title="Foto-5">
-                                                    <img src="assets/images/attached-files/img-3.png" class="thumb-img"
+                                                    <img src="/assets/images/attached-files/img-3.png" class="thumb-img"
                                                         alt="work-thumbnail">
                                                 </a>
                                                 <p class="font-13 m-b-5 text-muted"><small></small></p>
@@ -221,10 +255,11 @@
                                         <div class="attached-files m-t-30">
                                             <h5 class="font-600">Bukti Video </h5>
                                             <div class="files-list">
-                                                <div class="file-box col-sm-offset-2" >
+                                                <div class="file-box col-sm-offset-2">
                                                     <a>
                                                         <video width="540" height="320" controls>
-                                                        <source src="assets/images/attached-files/video.mp4" type="video/mp4">
+                                                            <source src="{{@$data[0]['problem']}}"
+                                                                type="video/mp4">
                                                         </video>
                                                     </a>
                                                     <p class="font-13 m-b-5 text-muted"><small></small></p>
@@ -239,7 +274,15 @@
                                                     <div class="file-box">
                                                         <a href="assets/images/attached-files/img-1.jpg"
                                                             class="image-popup" title="Foto-3">
-                                                            <img src="assets/images/attached-files/img-1.jpg"
+                                                            <img src="/assets/images/attached-files/img-1.jpg"
+                                                                class="thumb-img" alt="work-thumbnail">
+                                                        </a>
+                                                        <p class="font-13 m-b-5 text-muted"><small></small></p>
+                                                    </div>
+                                                    <div class="file-box">
+                                                        <a href="assets/images/attached-files/img-1.jpg"
+                                                            class="/image-popup" title="Foto-3">
+                                                            <img src="/assets/images/attached-files/img-1.jpg"
                                                                 class="thumb-img" alt="work-thumbnail">
                                                         </a>
                                                         <p class="font-13 m-b-5 text-muted"><small></small></p>
@@ -247,15 +290,7 @@
                                                     <div class="file-box">
                                                         <a href="assets/images/attached-files/img-1.jpg"
                                                             class="image-popup" title="Foto-3">
-                                                            <img src="assets/images/attached-files/img-1.jpg"
-                                                                class="thumb-img" alt="work-thumbnail">
-                                                        </a>
-                                                        <p class="font-13 m-b-5 text-muted"><small></small></p>
-                                                    </div>
-                                                    <div class="file-box">
-                                                        <a href="assets/images/attached-files/img-1.jpg"
-                                                            class="image-popup" title="Foto-3">
-                                                            <img src="assets/images/attached-files/img-1.jpg"
+                                                            <img src="/assets/images/attached-files/img-1.jpg"
                                                                 class="thumb-img" alt="work-thumbnail">
                                                         </a>
                                                         <p class="font-13 m-b-5 text-muted"><small></small></p>
@@ -291,7 +326,7 @@
 
 
                 <script>
-                    var resizefunc = [];
+                var resizefunc = [];
                 </script>
 
                 <!-- jQuery  -->
@@ -334,49 +369,50 @@
                 <script src="assets/js/jquery.app.js"></script>
 
                 <script type="text/javascript">
-                    $(document).ready(function() {
-                        $('#datatable').dataTable();
-                        $('#datatable-keytable').DataTable({
-                            keys: true
-                        });
-                        $('#datatable-responsive').DataTable();
-                        $('#datatable-scroller').DataTable({
-                            ajax: "assets/plugins/datatables/json/scroller-demo.json",
-                            deferRender: true,
-                            scrollY: 380,
-                            scrollCollapse: true,
-                            scroller: true
-                        });
-                        var table = $('#datatable-fixed-header').DataTable({
-                            fixedHeader: true
-                        });
+                $(document).ready(function() {
+                    $('#datatable').dataTable();
+                    $('#datatable-keytable').DataTable({
+                        keys: true
                     });
-                    TableManageButtons.init();
+                    $('#datatable-responsive').DataTable();
+                    $('#datatable-scroller').DataTable({
+                        ajax: "assets/plugins/datatables/json/scroller-demo.json",
+                        deferRender: true,
+                        scrollY: 380,
+                        scrollCollapse: true,
+                        scroller: true
+                    });
+                    var table = $('#datatable-fixed-header').DataTable({
+                        fixedHeader: true
+                    });
+                });
+                TableManageButtons.init();
                 </script>
                 <script type="text/javascript">
-                    $(window).load(function(){
-                        var $container = $('.portfolioContainer');
-                        $container.isotope({
-                            filter: '*',
-                            animationOptions: {
-                                duration: 750,
-                                easing: 'linear',
-                                queue: false
-                            }
-                        });
+                $(window).load(function() {
+                    var $container = $('.portfolioContainer');
+                    $container.isotope({
+                        filter: '*',
+                        animationOptions: {
+                            duration: 750,
+                            easing: 'linear',
+                            queue: false
+                        }
                     });
-                    $(document).ready(function() {
-                        $('.image-popup').magnificPopup({
-                            type: 'image',
-                            closeOnContentClick: true,
-                            mainClass: 'mfp-fade',
-                            gallery: {
-                                enabled: true,
-                                navigateByImgClick: true,
-                                preload: [0,1] // Will preload 0 - before current, and 1 after the current image
-                            }
-                        });
+                });
+                $(document).ready(function() {
+                    $('.image-popup').magnificPopup({
+                        type: 'image',
+                        closeOnContentClick: true,
+                        mainClass: 'mfp-fade',
+                        gallery: {
+                            enabled: true,
+                            navigateByImgClick: true,
+                            preload: [0,
+                                1] // Will preload 0 - before current, and 1 after the current image
+                        }
                     });
+                });
                 </script>
 
 </body>

@@ -71,7 +71,7 @@
 
 
         <!-- ========== Left Sidebar Start ========== -->
-        @include('fix.sidebar')
+        @include('manager.sbmanager')
         <!-- Left Sidebar End -->
 
 
@@ -86,30 +86,34 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card-box table-responsive">
-                                <table id="datatable-responsive"
+                            <table id="datatable-responsive"
                                     class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
                                     width="100%">
                                     <thead>
                                         <tr>
-                                            <th>Leader Teknisi</th>
-                                            <th>Nama Instansi</th>
+                                            <th>ID Instalasi</th>
+                                            <th>Nama Teknisi</th>
+                                            <th>Mulai Instalasi</th>
+                                            <th>Mulai Training</th>
+                                            <th>Selesai Training</th>
                                             <th>Anydesk ID</th>
-                                            <th>Tanggal Mulai Instalasi</th>
-                                            <th>Tanggal Selesai Instalasi</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($data as $item) 
                                         <tr>
-                                            <td>Tiger</td>
-                                            <td>Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
+                                            <td>{{@$item['installation_id']}}</td>
+                                            <td>Jefri Al Berto</td>
+                                            <td>{{@$item['start_installation']}}</td>
+                                            <td>{{@$item['start_training']}}</td>
+                                            <td>{{@$item['complete_training']}}</td>
+                                            <td>{{@$item['anydesk_id']}}</td>
                                             <td class="actions">
                                                 <a href="/detaillapinmanager" class="btn btn-icon waves-effect waves-light btn-info btn-xs m-b-5"> <i class="fa fa-eye"></i> <span> Lihat Detail</span></a>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

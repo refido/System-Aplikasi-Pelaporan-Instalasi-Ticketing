@@ -74,7 +74,7 @@
 
 
         <!-- ========== Left Sidebar Start ========== -->
-        @include('fix.sidebar')
+        @include('admin.sbadmin')
         <!-- Left Sidebar End -->
 
 
@@ -98,7 +98,8 @@
                                     width="100%">
                                     <thead>
                                         <tr>
-                                            <th>Leader Teknisi</th>
+                                            <th>Code</th>
+                                            <th>Kategori Instansi</th>
                                             <th>Nama Instansi</th>
                                             <th>Penanggung Jawab</th>
                                             <th>Tanggal Instalasi</th>
@@ -107,29 +108,30 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($data as $item) 
                                         <tr>
-                                            <td>Tiger</td>
-                                            <td>Singa</td>
-                                            <td>Sadewas</td>
-                                            <td>Edinburgh</td>
-                                            <td><span class="label label-pink">Baru</span></td>
+                                            <td>{{@$item['code']}}</td>
+                                            <td>{{@$item['category_instansi']}}</td>
+                                            <td>Haruka Persada</td>
+                                            <td>{{@$item['pic_name']}}</td>
+                                            <td>{{@$item['date_instalation']}}</td>
+                                            <td><span class="label label-pink">{{@$item['status']}}</span></td>
                                             <td class="actions">
-                                                <a href="/editdataladmin" class="btn btn-icon waves-effect waves-light btn-success btn-xs m-b-5"> <i class="fa fa-pencil-square-o"></i> <span> Edit</span></a>
-                                                <a href="/detaildataladmin" class="btn btn-icon waves-effect waves-light btn-info btn-xs m-b-5"> <i class="fa fa-eye"></i> <span> Detail</span></a>
+                                                <a href="/viewdataladmin/{{$item['id']}}/edit"
+                                                    class="btn btn-icon waves-effect waves-light btn-success btn-xs m-b-5">
+                                                    <i class="fa fa-pencil-square-o"></i></a>
+                                                <a href="/viewdataladmin/{{$item['id']}}" class="btn btn-icon waves-effect waves-light btn-info btn-xs m-b-5"> <i class="fa fa-eye"></i> <span> Detail</span></a>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div><!-- end col -->
-                    </div>
-                    <!-- end row -->
-
-
+                    </div><!-- end row -->
                 </div> <!-- container -->
 
             </div> <!-- content -->
-
             @include('fix.footer')
 
         </div>

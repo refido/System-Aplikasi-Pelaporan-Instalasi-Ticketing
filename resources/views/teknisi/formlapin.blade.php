@@ -83,7 +83,7 @@
 
 
         <!-- ========== Left Sidebar Start ========== -->
-        @include('fix.sidebar')
+        @include('teknisi.sbteknisi')
         <!-- Left Sidebar End -->
 
 
@@ -91,21 +91,21 @@
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
-        <div class="content-page">
-            <!-- Start content -->
+        <div class="content-page"> <!-- Start content -->
             <div class="content">
                 <div class="container">
-
-                    <div class="row ">
+                    <div class="row">
                         <div class="col-sm-12">
                             <div class="card-box">
                                 <div class="row">
-                                    <div class="col-lg-6 p-20 ">
-                                        <form class="form-horizontal" role="form">
-
+                                    <form class="form-horizontal" method="POST" action="/viewlapinteknisi"
+                                        enctype="multipart/form-data" role="form">
+                                        @csrf
+                                        <div class="col-lg-6 p-20 col-sm-offset-1">
+                                            
                                             <div class="form-group">
-                                                <label class="col-sm-8 m-t-15">Tanggal Mulai Instalasi</label>
-                                                <div class="col-sm-12">
+                                                <label class="col-md-8 m-t-15">Tanggal Mulai Instalasi</label>
+                                                <div class="col-sm-9">
                                                     <div class="input-group">
                                                         <span class="input-group-addon b-0 text-white"></span>
                                                         <input type="datetime-local" class="form-control "
@@ -115,8 +115,8 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-sm-8 m-t-15">Tanggal Mulai Training</label>
-                                                <div class="col-sm-12">
+                                                <label class="col-md-8 m-t-15">Tanggal Mulai Training</label>
+                                                <div class="col-sm-9">
                                                     <div class="input-group">
                                                         <span class="input-group-addon b-0 text-white"></span>
                                                         <input type="datetime-local" class="form-control "
@@ -125,9 +125,17 @@
                                                 </div>
                                             </div>
 
+                                            <div class="form-group">
+                                                <label class="col-md-8 m-t-15">ID Instalasi</label>
+                                                <div class="col-md-9">
+                                                    <input type="number" name="installation_id" class="form-control"
+                                                        placeholder="Masukkan instalasi id">
+                                                </div>
+                                            </div>
+                                            
                                             <div class="form-group">
                                                 <label class="col-md-8  m-t-15">Nama Leader</label>
-                                                <div class="col-md-12">
+                                                <div class="col-md-9">
                                                     <input type="text" class="form-control"
                                                         value="Nama leader">
                                                 </div>
@@ -135,7 +143,7 @@
 
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">Anydesk ID</label>
-                                                <div class="col-md-12">
+                                                <div class="col-md-9">
                                                     <input type="text" class="form-control"
                                                         placeholder="Masukkan id anydesk">
                                                 </div>
@@ -143,7 +151,7 @@
 
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">Internet Protocol Address</label>
-                                                <div class="col-md-12">
+                                                <div class="col-md-9">
                                                     <input type="text" class="form-control"
                                                         placeholder="Masukkan IP">
                                                 </div>
@@ -151,7 +159,7 @@
 
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">Kondisi Lisensi</label>
-                                                <div class="col-sm-12">
+                                                <div class="col-sm-9">
                                                     <select class="form-control select2">
                                                         <optgroup label="Kondisi Lisensi">
                                                             <option value="1">Trial</option>
@@ -162,8 +170,8 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-sm-8 m-t-15">Kondisi Komponen Sistem</label>
-                                                <div class="col-sm-12">
+                                                <label class="col-md-8 m-t-15">Kondisi Komponen Sistem</label>
+                                                <div class="col-sm-9">
                                                     <div class="checkbox checkbox-pink">
                                                         <input id="checkbox1" type="checkbox"
                                                             data-parsley-multiple="group1">
@@ -196,25 +204,24 @@
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">Deskripsi Kondisi Sistem
                                                     instalasi</label>
-                                                <div class="col-md-12">
+                                                <div class="col-md-9">
                                                     <textarea class="form-control" rows="5"></textarea>
                                                 </div>
                                             </div>
                                             
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">Upload File BAST</label>
-                                                <div class="col-md-12">
+                                                <div class="col-md-9">
                                                     <input type="file" class="dropify " data-height="70" />
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div><!-- end col -->
+                                        </div><!-- end col -->
 
-                                    <div class="col-lg-6 p-20 ">
-                                        <form class="form-horizontal" role="form">
+                                        <div class="col-lg-5 p-20 ">
+                                                
                                             <div class="form-group">
-                                                <label class="col-sm-8 m-t-15">Tanggal Selesai Instalasi</label>
-                                                <div class="col-sm-12">
+                                                <label class="col-md-8 m-t-15">Tanggal Selesai Instalasi</label>
+                                                <div class="col-sm-9">
                                                     <div class="input-group">
                                                         <span class="input-group-addon b-0 text-white"></span>
                                                         <input type="datetime-local" class="form-control "
@@ -224,8 +231,8 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-sm-8 m-t-15">Tanggal Selesai Training</label>
-                                                <div class="col-sm-12">
+                                                <label class="col-md-8 m-t-15">Tanggal Selesai Training</label>
+                                                <div class="col-sm-9">
                                                     <div class="input-group">
                                                         <span class="input-group-addon b-0 text-white"></span>
                                                         <input type="datetime-local" class="form-control "
@@ -236,7 +243,7 @@
 
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">Nama Instansi</label>
-                                                <div class="col-md-12  ">
+                                                <div class="col-md-9  ">
                                                     <input type="text" class="form-control" maxlength="25"
                                                         value="Nama instansi">
                                                 </div>
@@ -244,7 +251,7 @@
 
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">Kategori Instansi</label>
-                                                <div class="col-sm-12">
+                                                <div class="col-sm-9">
                                                     <select class="form-control select2">
                                                         <optgroup label="Pilih Leader">
                                                             <option value="1">Pemerintahan</option>
@@ -257,7 +264,7 @@
 
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">Jumlah Caller</label>
-                                                <div class="col-md-12">
+                                                <div class="col-md-9">
                                                     <input type="text" class="form-control"
                                                         placeholder="Masukkan jumlah caller">
                                                 </div>
@@ -265,7 +272,7 @@
 
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">Jenis Caller</label>
-                                                <div class="col-sm-12">
+                                                <div class="col-sm-9">
                                                     <select class="form-control select2">
                                                         <optgroup label="Jenis Caller">
                                                             <option value="1">Device</option>
@@ -278,51 +285,51 @@
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">Deskripsi Problem Sistem
                                                     instalasi</label>
-                                                <div class="col-md-12 m-t-5">
+                                                <div class="col-md-9 m-t-5">
                                                     <textarea class="form-control" rows="2"></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">Upload Foto Sistem Instalasi</label>
-                                                <div class="col-md-12">
+                                                <div class="col-md-9">
                                                     <input type="file" class="dropify " data-height="70" />
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">Upload Video Sistem Instalasi</label>
-                                                <div class="col-md-12">
+                                                <div class="col-md-9">
                                                     <input type="file" class="dropify " data-max-file-size="100M"
                                                         data-height="70" />
                                                 </div>
                                             </div>
 
-                                            <div class="form-group m-b-0 m-t-40">
-                                                <div class="col-sm-offset-4">
-                                                    <a href="/viewlapinteknisi" type="submit"
-                                                    class="btn btn-default waves-effect waves-light"><i
-                                                    class="fa fa-thumb-tack" aria-hidden="true"></i> Draft</a>
-                                                    <a href="/viewlapinteknisi" type="submit"
-                                                    class="btn btn-info waves-effect waves-light"><i
-                                                    class="fa fa-floppy-o" aria-hidden="true"></i> Simpan</a>
+                                            <div class="form-group">
+                                                <label class="col-md-8 m-t-15">Status</label>
+                                                <div class="col-md-9">
+                                                    <input type="number" name="status" class="form-control"
+                                                        placeholder="Status (1. open 2. proses)">
                                                 </div>
                                             </div>
 
-                                        </form>
-                                    </div>
-                                </div><!-- end col -->
-
-                            </div><!-- end row -->
-                        </div>
-                    </div><!-- end col -->
-                </div>
-                <!-- end row -->
-
-
-            </div> <!-- container -->
-
-        </div> <!-- content -->
+                                            <div class="form-group m-b-0 m-t-20">
+                                                <div class="col-md-12 m-t-30">
+                                                    <a href="/viewlapinteknisi" type="submit"
+                                                    class="btn btn-default waves-effect waves-light"><i aria-hidden="true"></i>Cancel</a>
+                                                    <button href="/viewlapinteknisi" type="submit"class="btn btn-success waves-effect waves-light">
+                                                        <i class="fa fa-floppy-o " aria-hidden="true"></i> Simpan Data</button>
+                                                </div>
+                                            </div>
+                                        </div><!-- end col -->
+                                    </form>
+                                </div><!-- end row -->
+                            </div><!-- end card -->
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+                </div> <!-- container -->
+            </div> <!-- content -->
+        </div> <!-- content page -->
 
         @include('fix.footer')
 

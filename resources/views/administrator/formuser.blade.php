@@ -80,7 +80,7 @@
 
 
         <!-- ========== Left Sidebar Start ========== -->
-        @include('fix.sidebar')
+        @include('administrator.sbadministrator')
         <!-- Left Sidebar End -->
 
 
@@ -97,9 +97,11 @@
                         <div class="col-sm-12">
                             <div class="card-box">
                                 <div class="row">
-                                    <form class="form-horizontal" method="POST" action="/viewadmtr" enctype="multipart/form-data" role="form">
-                                    <div class="col-lg-6 p-20 col-sm-offset-1">
+                                    <form class="form-horizontal" method="POST" action="/viewadmtr"
+                                        enctype="multipart/form-data" role="form">
+                                        <div class="col-lg-6 p-20 col-sm-offset-1">
                                             @csrf
+                                            <!-- @method('put') -->
                                             <div class="form-group">
                                                 <label class="col-md-8  m-t-15">Nama Pegawai</label>
                                                 <div class="col-md-9">
@@ -107,7 +109,7 @@
                                                         placeholder="Masukkan nama pegawai">
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">ID Pegawai</label>
                                                 <div class="col-sm-9">
@@ -123,19 +125,18 @@
                                                         placeholder="Masukkan nomor telepon pegawai">
                                                 </div>
                                             </div>
-                                        
-                                    </div><!-- end col -->
+                                        </div><!-- end col -->
 
-                                    <div class="col-lg-5 p-20 ">
-                                        
+                                        <div class="col-lg-5 p-20 ">
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">Kategori Pegawai</label>
                                                 <div class="col-sm-10">
-                                                    <select class="form-control select2" id="ktg_pegawai" name="ktg_pegawai">
-                                                            <option value="Teknisi">Teknisi</option>
-                                                            <option value="Admin">Admin</option>
-                                                            <option value="Programmer">Programmer</option>
-                                                            <option value="Manager">Manager</option>
+                                                    <select class="form-control select2" id="ktg_pegawai"
+                                                        name="ktg_pegawai">
+                                                        <option value="Teknisi">Teknisi</option>
+                                                        <option value="Admin">Admin</option>
+                                                        <option value="Programmer">Programmer</option>
+                                                        <option value="Manager">Manager</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -157,42 +158,43 @@
                                                     </label>
                                                 </div>
                                                 <div class="radio radio-primary col-sm-offset-1">
-                                                    <input type="radio" name="status" id="radio3" value="Tidak Aktif">
+                                                    <input type="radio" name="status" id="radio3" value="Non Aktif">
                                                     <label for="radio3">
                                                         Non Aktif
                                                     </label>
                                                 </div>
                                             </div>
 
-                                            
+
                                             <div class="form-group p-20 m-b-0 m-t-30">
                                                 <div class="col-sm-offset-0">
                                                     <a href="/viewadmtr" type="submit"
-                                                    class="btn btn-success waves-effect waves-light"><i
-                                                    class="fa fa-floppy-o" aria-hidden="true"></i> Cancel
-                                                    Data</a>
-                                                <button  type="submit"
-                                                    class="btn btn-info waves-effect waves-light"><i
-                                                        class="fa fa-floppy-o" aria-hidden="true"></i> Simpan
-                                                    Data</button>
+                                                        class="btn btn-info waves-effect waves-light"><i
+                                                            class="fa fa-floppy-o" aria-hidden="true"></i> Cancel
+                                                        Data</a>
+                                                    <button type="submit"
+                                                        class="btn btn-success waves-effect waves-light"><i
+                                                            class="fa fa-floppy-o" aria-hidden="true"></i> Simpan
+                                                        Data</button>
                                                 </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div><!-- end col -->
+                                            </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div><!-- end col -->
 
-                            </div><!-- end row -->
-                        </div>
-                    </div><!-- end col -->
+                    </div><!-- end row -->
                 </div>
-                <!-- end row -->
+            </div><!-- end col -->
+        </div>
+        <!-- end row -->
 
 
-            </div> <!-- container -->
+    </div> <!-- container -->
 
-        </div> <!-- content -->
+    </div> <!-- content -->
 
-        @include('fix.footer')
+    @include('fix.footer')
 
     </div>
 

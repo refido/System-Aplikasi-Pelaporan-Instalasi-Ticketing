@@ -74,7 +74,7 @@
 
 
         <!-- ========== Left Sidebar Start ========== -->
-        @include('fix.sidebar')
+        @include('teknisi.sbteknisi')
         <!-- Left Sidebar End -->
 
 
@@ -88,20 +88,21 @@
                 <div class="container">
                     <div class="row">
                         <div class="m-b-30">
-                            <a href="/viewtiketteknisi" type="button" class="btn btn-primary"><i class="fa fa-back"> </i>
+                            <a href="/viewtiketteknisi" type="button" class="btn btn-primary"><i class="fa fa-back">
+                                </i>
                                 Back</a>
                         </div>
                         <div class="col-sm-10 col-sm-offset-1 ">
                             <div class="card-box table-responsive">
                                 <div class="clearfix">
                                     <div class="pull-left col-sm-offset-1">
-                                        <h4>BANK MANDIRI<br>
-                                            <strong>Jl. Sigura-gura 12A</strong>
+                                        <h4>{{@$data['instance_name']}}<br>
+                                            <strong>{{@$data['address']}}</strong>
                                         </h4>
                                     </div>
                                     <div class="pull-left col-sm-offset-4">
                                         <h4>Kategori Instansi :
-                                            <strong>Industri</strong>
+                                            <strong>{{@$data['category_id']}}</strong>
                                         </h4>
 
                                     </div>
@@ -111,15 +112,15 @@
                                     <div class="col-md-10 ">
                                         <div class="pull-left m-t-30 col-sm-offset-2">
                                             <p><strong>Tanggal Aduan </strong> </p>
-                                            <p>Jan 17, 2016</p><br>
+                                            <p>{{@$data['date_created']}}</p><br>
                                         </div>
                                         <div class="pull-left m-t-30 col-sm-offset-2">
                                             <p><strong>No Ticket </strong> </p>
-                                            <p>172016</p><br>
+                                            <p>{{@$data['no_ticketing']}}</p><br>
                                         </div>
                                         <div class="pull-left m-t-30 col-sm-offset-2">
                                             <p><strong>No Telepon Aduan</strong> </p>
-                                            <p>0812172016</p><br>
+                                            <p>{{@$data['no_tlpn']}}</p><br>
                                         </div>
                                     </div><!-- end col -->
                                 </div>
@@ -128,21 +129,7 @@
                                     <div class="col-md-10 ">
                                         <div class="pull-left m-t-30 col-sm-offset-1">
                                             <h5 class="font-600 m-b-20 ">Isi Aduan</h5>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates,
-                                                illo, iste
-                                                itaque voluptas corrupti ratione reprehenderit magni similique? Tempore,
-                                                quos
-                                                delectus asperiores libero voluptas quod perferendis! Voluptate, quod
-                                                illo
-                                                rerum? Lorem ipsum dolor sit amet.
-                                            </p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates,
-                                                illo, iste
-                                                itaque voluptas corrupti ratione reprehenderit magni similique? Tempore,
-                                                quos
-                                                delectus asperiores libero voluptas quod perferendis! Voluptate, quod
-                                                illo
-                                                rerum? Lorem ipsum dolor sit amet.
+                                            <p>{{@$data['problem']}}
                                             </p>
                                         </div>
                                         <!-- <div class="pull-right m-t-30 col-sm-offset-2">
@@ -192,7 +179,7 @@
 
 
     <script>
-        var resizefunc = [];
+    var resizefunc = [];
     </script>
 
     <!-- jQuery  -->
@@ -230,7 +217,7 @@
     <script src="assets/js/jquery.app.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function() {
+    $(document).ready(function() {
         $('#datatable').dataTable();
         $('#datatable-keytable').DataTable({
             keys: true

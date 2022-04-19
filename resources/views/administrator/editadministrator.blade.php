@@ -12,7 +12,12 @@
 
     <!-- App title -->
     @include('fix.title')
-
+    <!-- DataTables -->
+    <link href="assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Plugins css-->
     <link href="assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
     <link href="assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
@@ -80,7 +85,7 @@
 
 
         <!-- ========== Left Sidebar Start ========== -->
-        @include('fix.sidebar')
+        @include('administrator.sbadministrator')
         <!-- Left Sidebar End -->
 
 
@@ -92,15 +97,17 @@
             <!-- Start content -->
             <div class="content">
                 <div class="container">
-                    
+
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card-box">
                                 <div class="row">
-                                    <form class="form-horizontal" method="POST" action="/viewadmtr/<?php echo $data[0]['id'];?>" enctype="multipart/form-data" role="form">
+                                    <form class="form-horizontal" method="POST"
+                                        action="/viewadmtr/<?php echo $data[0]['id'];?>" enctype="multipart/form-data"
+                                        role="form">
                                         @csrf
                                         @method('PUT')
-                                    <div class="col-lg-6 p-20 col-sm-offset-1">
+                                        <div class="col-lg-6 p-20 col-sm-offset-1">
                                             <div class="form-group">
                                                 <label class="col-md-8  m-t-15">Nama Pegawai</label>
                                                 <div class="col-md-9">
@@ -108,26 +115,26 @@
                                                         value="<?php echo $data[0]['name'];?>">
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">ID Pegawai</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" name="id_admin" class="form-control"
-                                                        value="{{@$data[0]['no_tlpn']}}">
+                                                        value="{{@$data[0]['id_admin']}}">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">Nomor Telepon</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" name="no_tlpn" class="form-control"
-                                                        value="{{@$data[0]['id_admin']}}">
+                                                    <input type="number" name="no_tlpn" class="form-control"
+                                                        value="{{@$data[0]['no_tlpn']}}">
                                                 </div>
                                             </div>
-                                    </div><!-- end col -->
+                                        </div><!-- end col -->
 
-                                    <div class="col-lg-5 p-20 ">
-                                        
+                                        <div class="col-lg-5 p-20 ">
+
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">Kategori Pegawai</label>
                                                 <div class="col-sm-10">
@@ -147,19 +154,19 @@
                                                 <label class="col-md-8 m-t-15">Password</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control"
-                                                        value="Masukkan password pegawai">
+                                                        value="{{@$data[0]['password']}}">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-md-12 m-t-15">Status Pegawai</label>
                                                 <div class="radio radio-primary col-sm-offset-1">
-                                                    <input type="radio" name="status" id="radio3" value="option1" checked>
+                                                    <input type="radio" name="status" id="radio3" value="Aktif" checked>
                                                     <label for="radio3">
                                                         Aktif
                                                     </label>
                                                 </div>
                                                 <div class="radio radio-primary col-sm-offset-1">
-                                                    <input type="radio" name="status" id="radio3" value="option2">
+                                                    <input type="radio" name="status" id="radio3" value="Non Aktif">
                                                     <label for="radio3">
                                                         Non Aktif
                                                     </label>
@@ -168,32 +175,32 @@
 
                                             <div class="form-group p-20 m-b-0 m-t-30">
                                                 <div class="col-sm-offset-0">
-                                            <a href="/viewadmtr" 
-                                                    class="btn btn-success waves-effect waves-light"><i
-                                                        class="fa fa-floppy-o" aria-hidden="true"></i> Cancel
-                                                    Edit</a>
-                                                <button type="submit"
-                                                    class="btn btn-info waves-effect waves-light"><i
-                                                    class="fa fa-floppy-o" aria-hidden="true"></i> Simpan
-                                                    Edit</button>
+                                                    <a href="/viewadmtr"
+                                                        class="btn btn-warning waves-effect waves-light"><i
+                                                            aria-hidden="true"></i> Cancel
+                                                        Edit</a>
+                                                    <button type="submit"
+                                                        class="btn btn-success waves-effect waves-light"><i
+                                                            class="fa fa-floppy-o" aria-hidden="true"></i> Simpan
+                                                        Edit</button>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
-                                </div><!-- end col -->
+                                    </form>
+                                </div>
+                            </div><!-- end col -->
 
-                            </div><!-- end row -->
-                        </div>
-                    </div><!-- end col -->
-                </div>
-                <!-- end row -->
+                        </div><!-- end row -->
+                    </div>
+                </div><!-- end col -->
+            </div>
+            <!-- end row -->
 
 
-            </div> <!-- container -->
+        </div> <!-- container -->
 
-        </div> <!-- content -->
+    </div> <!-- content -->
 
-        @include('fix.footer')
+    @include('fix.footer')
 
     </div>
 

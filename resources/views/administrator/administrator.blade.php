@@ -2,37 +2,37 @@
 <html>
 
 <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
-        <meta name="author" content="Coderthemes">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+    <meta name="author" content="Coderthemes">
 
-        @include('fix.title')
+    @include('fix.title')
 
-        <!-- DataTables -->
-        <link href="assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/plugins/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/plugins/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- DataTables -->
+    <link href="assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-        <!-- App CSS -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+    <!-- App CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
 
-        <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
+    <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
 
-        <script src="assets/js/modernizr.min.js"></script>
+    <script src="assets/js/modernizr.min.js"></script>
 </head>
 
 
@@ -60,7 +60,7 @@
                             </button>
                         </li>
                         <li>
-                            <h4 class="page-title">DAFTAR DATA INSTALASI</h4>
+                            <h4 class="page-title">DAFTAR DATA PEGAWAI</h4>
                         </li>
                     </ul>
 
@@ -71,7 +71,7 @@
 
 
         <!-- ========== Left Sidebar Start ========== -->
-        @include('fix.sidebar')
+        @include('administrator.sbadministrator')
         <!-- Left Sidebar End -->
 
 
@@ -87,7 +87,8 @@
                         <div class="col-sm-12">
                             <div class="card-box table-responsive">
                                 <div class="m-b-30">
-                                    <a href="/formuser"  type="button" class="btn btn-primary"><i class="fa fa-plus"> </i> Tambah
+                                    <a href="/formuser" type="button" class="btn btn-primary"><i class="fa fa-plus">
+                                        </i> Tambah
                                         User</a>
                                 </div>
                                 <table id="datatable-responsive"
@@ -104,24 +105,28 @@
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
-                                    
+
                                     <tbody>
-                                        @foreach ($data as $item)  
-                                        
+                                        @foreach ($data as $item)
                                         <tr>
                                             <td>{{@$item['name']}}</td>
-                                            <td>{{@$item['ktg_pegawai']}}</td>
+                                            <td>Teknisi</td>
                                             <td>{{@$item['no_tlpn']}}</td>
                                             <td>{{@$item['id_admin']}}</td>
-                                            <td>{{@$item['pw_pegawai']}}</td>
+                                            <td>12345</td>
                                             <td>{{@$item['status']}}</td>
                                             <td class="actions">
-                                                <a href="/viewadmtr/{{$item['id']}}/editadmtr" class="btn btn-icon waves-effect waves-light btn-success btn-xs m-b-5"> <i class="fa fa-pencil-square-o"></i></a>
+                                                <a href="/viewadmtr/{{$item['id']}}/edit"
+                                                    class="btn btn-icon waves-effect waves-light btn-success btn-xs m-b-5">
+                                                    <i class="fa fa-pencil-square-o"></i></a>
                                                 <form method="POST" action="/viewadmtr/{{$item['id']}}">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
-                                                <button type="submit" class="btn btn-icon waves-effect waves-light btn-info btn-xs m-b-5"> <i class="fa fa-trash"></i></button>
-                                            </form>
+                                                    <button type="submit" href="modal-demo"
+                                                        class="btn btn-icon waves-effect waves-light btn-info btn-xs m-b-5"
+                                                        data-toggle="modal" data-target="#dialog">
+                                                        <i class="fa fa-trash"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -136,6 +141,42 @@
                 </div> <!-- container -->
 
             </div> <!-- content -->
+
+
+            <!-- MODAL -->
+            <div class="modal fade" id="dialog" tabindex="-1" aria-labelledby="dialog" >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                <span>&times;</span>
+                            </button>
+                            <h4 class="modal-title">Konfirmasi</h4>
+                        </div>
+                        <div class="modal-body">
+                            <h5 class="text-center">Apakah anda yakin ingin menghapus data ini</h5>
+                        </div>
+                        <div class="row m-t-20">
+                            <div class="modal-footer">
+                                <form action="">
+                                    <a href="#" type="button" class="btn btn-primary"> Iya</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="custom-modal" class="modal-demo" >
+			    <button type="button" class="close" onclick="Custombox.close();">
+			        <span>&times;</span><span class="sr-only">Close</span>
+			    </button>
+			    <h4 class="custom-modal-title">Modal title</h4>
+			    <div class="custom-modal-text">
+			        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+			    </div>
+			</div>
+            <!-- end Modal -->
 
             @include('fix.footer')
 
@@ -189,6 +230,10 @@
 
     <!-- Datatable init js -->
     <script src="assets/pages/datatables.init.js"></script>
+
+    <!-- Modal-Effect -->
+    <script src="assets/plugins/custombox/dist/custombox.min.js"></script>
+    <script src="assets/plugins/custombox/dist/legacy.min.js"></script>
 
     <!-- App js -->
     <script src="assets/js/jquery.core.js"></script>

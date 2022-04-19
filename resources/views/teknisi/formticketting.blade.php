@@ -83,7 +83,7 @@
 
 
         <!-- ========== Left Sidebar Start ========== -->
-        @include('fix.sidebar')
+        @include('teknisi.sbteknisi')
         <!-- Left Sidebar End -->
 
 
@@ -95,20 +95,18 @@
             <!-- Start content -->
             <div class="content">
                 <div class="container">
-
                     <div class="row ">
                         <div class="col-sm-12">
                             <div class="card-box">
                                 <div class="row">
-                                    <div class="col-lg-6 p-20 ">
-                                        <form class="form-horizontal" role="form">
-
-                                            
-
+                                    <form class="form-horizontal" method="POST" action="/viewriwayat"
+                                        enctype="multipart/form-data" role="form">
+                                        @csrf
+                                        <div class="col-lg-6 p-20 ">
                                             <div class="form-group">
                                                 <label class="col-md-8  m-t-15">Nomor Ticket</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control" name="no_tikecting"
                                                         placeholder="Masukkan nomor ticket">
                                                 </div>
                                             </div>
@@ -116,7 +114,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">Client</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control" name="client_name"
                                                         placeholder="Masukkan nama client">
                                                 </div>
                                             </div>
@@ -125,49 +123,39 @@
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">Isi Aduan</label>
                                                 <div class="col-md-12">
-                                                    <textarea class="form-control" rows="5"></textarea>
+                                                    <textarea class="form-control" name="problem" rows="5"></textarea>
                                                 </div>
                                             </div>
-                                            
-                                            
-                                        </form>
-                                    </div><!-- end col -->
+                                        </div><!-- end col -->
 
-                                    <div class="col-lg-6 p-20 ">
-                                        <form class="form-horizontal" role="form">
+                                        <div class="col-lg-6 p-20 ">
                                             <div class="form-group">
                                                 <label class="col-md-8 m-t-15">Penjelasan Penyelesaian</label>
                                                 <div class="col-md-12 m-t-5">
-                                                    <textarea class="form-control" rows="14"></textarea>
+                                                    <textarea class="form-control" name="solving" rows="14"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group m-b-0 m-t-40">
                                                 <div class="col-sm-offset-4">
-                                                    <a href="javascript:void(0);"  type="submit"
-                                                    class="btn btn-rounded btn-primary waves-effect waves-light"> Proses</a>
+                                                    <a href="/viewtiketteknisi"  type="submit"
+                                                    class="btn btn-rounded btn-primary waves-effect waves-light"> Cancel</a>
 
-                                                    <a href="/viewtiketteknisi" type="submit"
-                                                    class="btn btn-rounded btn-success waves-effect waves-light">Selesai</a>
+                                                    <button href="/viewriwayat" type="submit"
+                                                    class="btn btn-rounded btn-success waves-effect waves-light">Selesai</button>
                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     <a href="/viewriwayat" type="submit"
                                                     class="btn btn-rounded btn-warning waves-effect waves-light">Riwayat</a>
                                                 </div>
                                             </div>
-
-                                        </form>
-                                    </div>
-                                </div><!-- end col -->
-
-                            </div><!-- end row -->
-                        </div>
-                    </div><!-- end col -->
-                </div>
-                <!-- end row -->
-
-
-            </div> <!-- container -->
-
-        </div> <!-- content -->
+                                        </div><!-- end col -->
+                                    </form>
+                                </div><!-- end row -->
+                            </div><!-- end card -->
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+                </div> <!-- container -->
+            </div> <!-- content -->
+        </div><!-- content page-->
 
         @include('fix.footer')
 

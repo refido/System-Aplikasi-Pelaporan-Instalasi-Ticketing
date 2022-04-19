@@ -71,7 +71,7 @@
 
 
         <!-- ========== Left Sidebar Start ========== -->
-        @include('fix.sidebar')
+        @include('teknisi.sbteknisi')
         <!-- Left Sidebar End -->
 
 
@@ -94,29 +94,31 @@
                                     width="100%">
                                     <thead>
                                         <tr>
-                                            <th>Leader Teknisi</th>
-                                            <th>Nama Instansi</th>
-                                            <th>Anydesk ID</th>
+                                            <th>ID Instalasi</th>
+                                            <th>Nama Teknisi</th>
                                             <th>Mulai Instalasi</th>
-                                            <th>Selesai Instalasi</th>
+                                            <th>Mulai Training</th>
+                                            <th>Selesai Training</th>
+                                            <th>Anydesk ID</th>
                                             <th>Status Penyimpanan</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($data as $item) 
                                         <tr>
-                                            <td>Tiger</td>
-                                            <td>Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
+                                            <td>{{@$item['installation_id']}}</td>
+                                            <td>Jefri Al Berto</td>
+                                            <td>{{@$item['start_installation']}}</td>
+                                            <td>{{@$item['start_training']}}</td>
+                                            <td>{{@$item['complete_training']}}</td>
+                                            <td>{{@$item['anydesk_id']}}</td>
+                                            <td><span class="label label-success">{{@$item['status']}}</span></td>
                                             <td class="actions">
-                                                <a href="" class="btn btn-icon waves-effect waves-light btn-success btn-xs m-b-5"> <i class="fa fa-tasks"></i> <span> Selesai</span></a>
-                                            </td>
-                                            <td class="actions">
-                                                <a href="/detaillapinteknisi" class="btn btn-icon waves-effect waves-light btn-info btn-xs m-b-5"> <i class="fa fa-eye"></i> <span> Lihat Detail</span></a>
+                                                <a href="/viewlapinteknisi/{{$item['id']}}" class="btn btn-icon waves-effect waves-light btn-info btn-xs m-b-5"> <i class="fa fa-eye"></i> <span> Lihat Detail</span></a>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

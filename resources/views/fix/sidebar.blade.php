@@ -4,7 +4,7 @@
         <!-- User -->
         <div class="user-box">
             <div class="user-img">
-                <img src="assets/images/users/ns.jpg" alt="user-img" title="Nakula Sadewa"
+                <img src="/assets/images/users/ns.jpg" alt="user-img" title="Nakula Sadewa"
                     class="img-circle img-thumbnail img-responsive">
                 <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>
             </div>

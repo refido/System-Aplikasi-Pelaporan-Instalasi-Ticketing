@@ -80,7 +80,7 @@
 
 
         <!-- ========== Left Sidebar Start ========== -->
-        @include('fix.sidebar')
+        @include('administartor.sbadministrator')
         <!-- Left Sidebar End -->
 
 

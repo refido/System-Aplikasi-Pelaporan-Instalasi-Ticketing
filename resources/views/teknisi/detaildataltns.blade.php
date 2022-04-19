@@ -74,7 +74,7 @@
 
 
         <!-- ========== Left Sidebar Start ========== -->
-        @include('fix.sidebar')
+        @include('teknisi.sbteknisi')
         <!-- Left Sidebar End -->
 
 
@@ -92,75 +92,67 @@
                                 Back</a>
                         </div>
                         <div class="col-sm-10 col-sm-offset-1 ">
-                            
                             <div class="card-box table-responsive">
                                 <div class="clearfix">
-                                    <div class="pull-left">
-                                        <h4>BANK MANDIRI<br>
-                                            <strong>Jl. Sigura-gura 12A</strong>
+                                    <div class="pull-left col-sm-offset-1">
+                                        <h4>Haruka Persada<br>
+                                            <strong>Malang</strong>
                                         </h4>
                                     </div>
-                                    <div class="pull-right">
+                                    <div class="pull-left col-sm-offset-4">
                                         <h4>Kategori Instansi :
-                                            <strong>Industri</strong>
+                                            <strong>{{@$data[0]['category_instansi']}}</strong>
                                         </h4>
 
                                     </div>
-                                    {{-- <div class="pull-right">
-                                        <h4>Tanggal Selesai Instalasi <br>
-                                            <strong>15-01-2021</strong>
-                                        </h4>
-                                    </div> --}}
                                 </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-10 ">
-                                        <div class="pull-left m-t-30 col-sm-offset-1">
-                                            <p><strong>Tanggal Mulai Instalasi </strong> </p>
-                                            <p>Jan 17, 2016</p><br>
-                                            <p><strong>Penanggung Jawab (PIC)</strong> </p>
-                                            <p>Agus Susianto</p>
+                                        <div class="pull-left m-t-30 col-sm-offset-2">
+                                            <p><strong>Tanggal Instalasi </strong> </p>
+                                            <p>{{@$data[0]['date_instalation']}}</p><br>
                                         </div>
-                                        <div class="pull-right m-t-30 " >
-                                            <p><strong>Tanggal Selesai Instalasi </strong></p>
-                                            <p>Jan 17, 2016</p><br>
+                                        <div class="pull-left m-t-30 col-sm-offset-2">
+                                            <p><strong>Penanggung Jawab (PIC)</strong> </p>
+                                            <p>{{@$data[0]['pic_name']}}</p>
+                                        </div>
+                                        <div class="pull-right m-t-30 ">
                                             <p><strong>No Telp PIC</strong></p>
-                                            <p>08121212121</p><br>
+                                            <p>{{@$data[0]['pic_phone']}}</p><br>
                                         </div>
                                     </div><!-- end col -->
                                 </div>
                                 <hr>
-                                    <div class="row">
-                                        <div class="col-md-10 col-sm-offset-1">
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Jumlah Teknisi</th>
-                                                            <th>Nama Teknisi</th>
-                                                            <th>Leader</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>Indah Ppppp <br>
-                                                                Wahyu Indah</td>
-                                                            <td>Wahyu Indah</td>
-                                                        </tr>
-                                                        
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                <div class="row">
+                                    <div class="col-md-10 col-sm-offset-1">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Jumlah Teknisi</th>
+                                                        <th>Nama Teknisi</th>
+                                                        <th>Leader</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>{{@$data[0]['number_of_technicians']}}</td>
+                                                        <td>1. Jefri Al Berto <br>
+                                                        2. Edward New gate</td>
+                                                        <td>Jefri Al Berto</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div><!-- end col -->
-                    </div>
-                    <!-- end row -->
+                    </div><!-- end row -->
                 </div> <!-- container -->
-            </div> <!-- content -->
+            </div> <!-- content-->
+        </div> <!-- content  page-->
 
             @include('fix.footer')
         

@@ -71,7 +71,7 @@
 
 
         <!-- ========== Left Sidebar Start ========== -->
-        @include('fix.sidebar')
+        @include('manager.sbmanager')
         <!-- Left Sidebar End -->
 
 
@@ -86,36 +86,29 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card-box table-responsive">
-
-                            <table id="datatable-responsive"
+                                <div class="m-b-30">
+                                    <a href="/formtiketteknisi"  type="button" class="btn btn-primary"><i class="fa fa-arrow-left"> </i> Back </a>
+                                </div>
+                                <table id="datatable-responsive"
                                     class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
                                     width="100%">
                                     <thead>
                                         <tr>
-                                            <th>Nomor Ticket</th>
+                                            <th>No Ticket</th>
                                             <th>Nama Instansi</th>
-                                            <th>Alamat</th>
-                                            <th>Tanggal Aduan</th>
-                                            <th>Nomor Telepon</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
+                                            <th>Aduan Masalah</th>
+                                            <th>Penyelesaian</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($data as $item) 
                                         <tr>
-                                            <td>Tiger</td>
-                                            <td>Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>Nixon</td>
-                                            <td><span class="label label-pink">Selesai</span></td>
-                                            <td class="actions">
-                                                <a href="/detaillaptickmanager"
-                                                    class="btn btn-icon waves-effect waves-light btn-info btn-xs m-b-5">
-                                                    <i class="fa fa-eye"></i> <span> Detail</span></a>
-                                            </td>
-
+                                            <td>{{@$item['no_ticketing']}}</td>
+                                            <td>{{@$item['client_name']}}</td>
+                                            <td>{{@$item['problem']}}</td>
+                                            <td>{{@$item['solving']}}</td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -127,36 +120,6 @@
                 </div> <!-- container -->
 
             </div> <!-- content -->
-
-            <!-- MODAL -->
-
-
-            <div class="modal fade" id="dialog" tabindex="-1" aria-labelledby="dialog" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">×</span>
-                            </button>
-                            <h4 class="modal-title">Konfirmasi</h4>
-                        </div>
-                        <div class="modal-body">
-                            <h5 class="text-center">Apakah anda ingin memproses data ini?</h5>
-                        </div>
-                        <div class="row m-t-20">
-                            <div class="modal-footer">
-                                <form>
-                                    <a href="/ftiket" type="button" class="btn btn-primary"> Ya</a>
-                                </form> <br>
-                                <form action="">
-                                    <button id="dialogCancel" class="btn btn-default waves-effect">Tidak</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end Modal -->
 
             @include('fix.footer')
 
@@ -178,7 +141,7 @@
 
 
     <script>
-        var resizefunc = [];
+    var resizefunc = [];
     </script>
 
     <!-- jQuery  -->
@@ -209,11 +172,6 @@
     <script src="assets/plugins/datatables/dataTables.scroller.min.js"></script>
 
     <!-- Datatable init js -->
-    <script src="assets/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-    <script src="assets/plugins/jquery-datatables-editable/jquery.dataTables.js"></script>
-    <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
-    <script src="assets/plugins/tiny-editable/mindmup-editabletable.js"></script>
-    <script src="assets/plugins/tiny-editable/numeric-input-example.js"></script>
     <script src="assets/pages/datatables.init.js"></script>
 
     <!-- App js -->
@@ -221,7 +179,7 @@
     <script src="assets/js/jquery.app.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function() {
+    $(document).ready(function() {
         $('#datatable').dataTable();
         $('#datatable-keytable').DataTable({
             keys: true

@@ -71,7 +71,7 @@
 
 
         <!-- ========== Left Sidebar Start ========== -->
-        @include('fix.sidebar')
+        @include('teknisi.sbteknisi')
         <!-- Left Sidebar End -->
 
 
@@ -95,31 +95,29 @@
                                             <th>Nomor Ticket</th>
                                             <th>Nama Instansi</th>
                                             <th>Alamat</th>
-                                            <th>Tanggal Aduan</th>
-                                            <th>Nomor Telepon</th>
+                                            <th>Ketegori Komponen</th>
+                                            <th>Problem</th>
                                             <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($data as $item) 
                                         <tr>
-                                            <td>01</td>
-                                            <td>23-11-2021</td>
-                                            <td>System Architect</td>
-                                            <td>System Architect</td>
-                                            <td>System Architect</td>
-                                            <td><span class="label label-pink">Pending</span></td>
+                                            <td>{{@$item['no_ticketing']}}</td>
+                                            <td>{{@$item['instance_name']}}</td>
+                                            <td>{{@$item['address']}}</td>
+                                            <td>{{@$item['name_components']}}</td>
+                                            <td>{{@$item['problem']}}</td>
+                                            <td><span class="label label-pink">{{@$item['status']}}</span></td>
                                             <td class="actions">
-                                                <a href="/detailtiketteknisi"
-                                                    class="btn btn-icon waves-effect waves-light btn-info btn-xs m-b-5">
-                                                    <i class="fa fa-eye"></i> <span> Detail</span></a>
                                                 <a href=""
                                                     class="btn btn-icon waves-effect waves-light btn-warning btn-xs m-b-5"
                                                     data-toggle="modal" data-target="#dialog">
-                                                    <i class="fa fa-wrench"></i> <span> Proses</span></a>
+                                                    <i class="fa fa-wrench"></i> Perbaiki</a>
                                             </td>
-
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

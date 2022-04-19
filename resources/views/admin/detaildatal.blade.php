@@ -2,37 +2,32 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
-    <meta name="author" content="Coderthemes">
 
     @include('fix.title')
 
-    <!-- DataTables -->
-    <link href="assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/plugins/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/plugins/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-    <!-- App CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+        <!-- App CSS -->
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/core.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/components.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/icons.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/pages.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/menu.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/responsive.css" rel="stylesheet" type="text/css" />
 
-    <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+        <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
 
-    <script src="assets/js/modernizr.min.js"></script>
+        <script src="/assets/js/modernizr.min.js"></script>
 </head>
 
 
@@ -74,7 +69,7 @@
 
 
         <!-- ========== Left Sidebar Start ========== -->
-        @include('fix.sidebar')
+        @include('admin.sbadmin')
         <!-- Left Sidebar End -->
 
 
@@ -92,85 +87,77 @@
                                 Back</a>
                         </div>
                         <div class="col-sm-10 col-sm-offset-1 ">
-                            
                             <div class="card-box table-responsive">
                                 <div class="clearfix">
-                                    <div class="pull-left">
-                                        <h4>BANK MANDIRI<br>
-                                            <strong>Jl. Sigura-gura 12A</strong>
+                                    <div class="pull-left col-sm-offset-1">
+                                        <h4>Haruka Persada<br>
+                                            <strong>Malang</strong>
                                         </h4>
                                     </div>
-                                    <div class="pull-right">
+                                    <div class="pull-left col-sm-offset-4">
                                         <h4>Kategori Instansi :
-                                            <strong>Industri</strong>
+                                            <strong>{{@$data[0]['category_instansi']}}</strong>
                                         </h4>
 
                                     </div>
-                                    {{-- <div class="pull-right">
-                                        <h4>Tanggal Selesai Instalasi <br>
-                                            <strong>15-01-2021</strong>
-                                        </h4>
-                                    </div> --}}
                                 </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-10 ">
-                                        <div class="pull-left m-t-30 col-sm-offset-1">
-                                            <p><strong>Tanggal Mulai Instalasi </strong> </p>
-                                            <p>Jan 17, 2016</p><br>
-                                            <p><strong>Penanggung Jawab (PIC)</strong> </p>
-                                            <p>Agus Susianto</p>
+                                        <div class="pull-left m-t-30 col-sm-offset-2">
+                                            <p><strong>Tanggal Instalasi </strong> </p>
+                                            <p>{{@$data[0]['date_instalation']}}</p><br>
                                         </div>
-                                        <div class="pull-right m-t-30 " >
-                                            <p><strong>Tanggal Selesai Instalasi </strong></p>
-                                            <p>Jan 17, 2016</p><br>
+                                        <div class="pull-left m-t-30 col-sm-offset-2">
+                                            <p><strong>Penanggung Jawab (PIC)</strong> </p>
+                                            <p>{{@$data[0]['pic_name']}}</p>
+                                        </div>
+                                        <div class="pull-right m-t-30 ">
                                             <p><strong>No Telp PIC</strong></p>
-                                            <p>08121212121</p><br>
+                                            <p>{{@$data[0]['pic_phone']}}</p><br>
                                         </div>
                                     </div><!-- end col -->
                                 </div>
                                 <hr>
-                                    <div class="row">
-                                        <div class="col-md-10 col-sm-offset-1">
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Jumlah Teknisi</th>
-                                                            <th>Nama Teknisi</th>
-                                                            <th>Leader</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>Indah Ppppp <br>
-                                                                Wahyu Indah</td>
-                                                            <td>Wahyu Indah</td>
-                                                        </tr>
-                                                        
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                <div class="row">
+                                    <div class="col-md-10 col-sm-offset-1">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Jumlah Teknisi</th>
+                                                        <th>Nama Teknisi</th>
+                                                        <th>Leader</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>{{@$data[0]['number_of_technicians']}}</td>
+                                                        <td>1. Jefri Al Berto <br>
+                                                        2. Edward New gate</td>
+                                                        <td>Jefri Al Berto</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div><!-- end col -->
-                    </div>
-                    <!-- end row -->
+                    </div><!-- end row -->
                 </div> <!-- container -->
-            </div> <!-- content -->
+            </div> <!-- content-->
+        </div> <!-- content  page-->
 
-            @include('fix.footer')
-        
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Right content here -->
-        <!-- ============================================================== -->
-        <!-- Right Sidebar -->
-        @include('fix.rightsb')
-        <!-- /Right-bar -->
+        @include('fix.footer')
+
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Right content here -->
+    <!-- ============================================================== -->
+    <!-- Right Sidebar -->
+    @include('fix.rightsb')
+    <!-- /Right-bar -->
 
     </div>
     <!-- END wrapper -->

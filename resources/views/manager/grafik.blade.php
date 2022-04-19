@@ -69,7 +69,7 @@
 
 
             <!-- ========== Left Sidebar Start ========== -->
-            @include('fix.sidebar')
+            @include('manager.sbmanager')
             <!-- Left Sidebar End -->
 
 

@@ -10,20 +10,20 @@
         @include('fix.title')
 
         <!-- DataTables -->
-        <link href="assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/plugins/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/plugins/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/plugins/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/plugins/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
 
         <!-- App CSS -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/core.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/components.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/icons.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/pages.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/menu.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/responsive.css" rel="stylesheet" type="text/css" />
 
         <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,7 +32,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
 
-        <script src="assets/js/modernizr.min.js"></script>
+        <script src="/assets/js/modernizr.min.js"></script>
 </head>
 
 
@@ -71,7 +71,7 @@
 
 
         <!-- ========== Left Sidebar Start ========== -->
-        @include('fix.sidebar')
+        @include('admin.sbadmin')
         <!-- Left Sidebar End -->
 
 
@@ -105,19 +105,32 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($data as $item) 
                                         <tr>
-                                            <td>Tiger</td>
-                                            <td>Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>Nixon</td>
-                                            <td><span class="label label-pink">Baru</span></td>
+                                            <td>{{@$item['no_ticketing']}}</td>
+                                            <td>{{@$item['instance_name']}}</td>
+                                            <td>{{@$item['address']}}</td>
+                                            <td>{{@$item['date_created']}}</td>
+                                            <td>081345655777</td>
+                                            <td><span class="label label-pink">{{@$item['status']}}</span></td>
                                             <td class="actions">
-                                                <a href="/detailtiketadmin" class="btn btn-icon waves-effect waves-light btn-info btn-xs m-b-5"> <i class="fa fa-eye"></i></a>
-                                                <a href="/editdatingadmin" class="btn btn-icon waves-effect waves-light btn-success btn-xs m-b-5"> <i class="fa fa-pencil-square-o"></i></a>
-                                                <a href="" class="btn btn-icon waves-effect waves-light btn-info btn-xs m-b-5"> <i class="fa fa-trash"></i></a>
+                                                <a href="/viewdatingadmin/{{$item['id']}}" 
+                                                    class="btn btn-icon waves-effect waves-light btn-info btn-xs m-b-5"> 
+                                                    <i class="fa fa-eye"></i></a>
+                                                <a href="/viewdatingadmin/{{$item['id']}}/edit"
+                                                    class="btn btn-icon waves-effect waves-light btn-success btn-xs m-b-5">
+                                                    <i class="fa fa-pencil-square-o"></i>
+                                                </a>
+                                                <form method="POST" action="/viewdatingadmin/{{$item['id']}}">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                    <button type="submit"
+                                                        class="btn btn-icon waves-effect waves-light btn-info btn-xs m-b-5">
+                                                        <i class="fa fa-trash"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -154,38 +167,38 @@
     </script>
 
     <!-- jQuery  -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/detect.js"></script>
-    <script src="assets/js/fastclick.js"></script>
-    <script src="assets/js/jquery.slimscroll.js"></script>
-    <script src="assets/js/jquery.blockUI.js"></script>
-    <script src="assets/js/waves.js"></script>
-    <script src="assets/js/jquery.nicescroll.js"></script>
-    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/detect.js"></script>
+    <script src="/assets/js/fastclick.js"></script>
+    <script src="/assets/js/jquery.slimscroll.js"></script>
+    <script src="/assets/js/jquery.blockUI.js"></script>
+    <script src="/assets/js/waves.js"></script>
+    <script src="/assets/js/jquery.nicescroll.js"></script>
+    <script src="/assets/js/jquery.scrollTo.min.js"></script>
 
     <!-- Datatables-->
-    <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
-    <script src="assets/plugins/datatables/dataTables.buttons.min.js"></script>
-    <script src="assets/plugins/datatables/buttons.bootstrap.min.js"></script>
-    <script src="assets/plugins/datatables/jszip.min.js"></script>
-    <script src="assets/plugins/datatables/pdfmake.min.js"></script>
-    <script src="assets/plugins/datatables/vfs_fonts.js"></script>
-    <script src="assets/plugins/datatables/buttons.html5.min.js"></script>
-    <script src="assets/plugins/datatables/buttons.print.min.js"></script>
-    <script src="assets/plugins/datatables/dataTables.fixedHeader.min.js"></script>
-    <script src="assets/plugins/datatables/dataTables.keyTable.min.js"></script>
-    <script src="assets/plugins/datatables/dataTables.responsive.min.js"></script>
-    <script src="assets/plugins/datatables/responsive.bootstrap.min.js"></script>
-    <script src="assets/plugins/datatables/dataTables.scroller.min.js"></script>
+    <script src="/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/assets/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="/assets/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="/assets/plugins/datatables/buttons.bootstrap.min.js"></script>
+    <script src="/assets/plugins/datatables/jszip.min.js"></script>
+    <script src="/assets/plugins/datatables/pdfmake.min.js"></script>
+    <script src="/assets/plugins/datatables/vfs_fonts.js"></script>
+    <script src="/assets/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="/assets/plugins/datatables/buttons.print.min.js"></script>
+    <script src="/assets/plugins/datatables/dataTables.fixedHeader.min.js"></script>
+    <script src="/assets/plugins/datatables/dataTables.keyTable.min.js"></script>
+    <script src="/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="/assets/plugins/datatables/responsive.bootstrap.min.js"></script>
+    <script src="/assets/plugins/datatables/dataTables.scroller.min.js"></script>
 
     <!-- Datatable init js -->
-    <script src="assets/pages/datatables.init.js"></script>
+    <script src="/assets/pages/datatables.init.js"></script>
 
     <!-- App js -->
-    <script src="assets/js/jquery.core.js"></script>
-    <script src="assets/js/jquery.app.js"></script>
+    <script src="/assets/js/jquery.core.js"></script>
+    <script src="/assets/js/jquery.app.js"></script>
 
     <script type="text/javascript">
     $(document).ready(function() {
@@ -195,7 +208,7 @@
         });
         $('#datatable-responsive').DataTable();
         $('#datatable-scroller').DataTable({
-            ajax: "assets/plugins/datatables/json/scroller-demo.json",
+            ajax: "/assets/plugins/datatables/json/scroller-demo.json",
             deferRender: true,
             scrollY: 380,
             scrollCollapse: true,

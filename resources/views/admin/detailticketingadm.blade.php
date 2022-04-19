@@ -2,37 +2,33 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
-    <meta name="author" content="Coderthemes">
 
-    @include('fix.title')
+        @include('fix.title')
 
-    <!-- DataTables -->
-    <link href="assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- DataTables -->
+        <link href="/assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/plugins/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/plugins/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-    <!-- App CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+        <!-- App CSS -->
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/core.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/components.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/icons.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/pages.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/menu.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/responsive.css" rel="stylesheet" type="text/css" />
 
-    <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+        <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
 
-    <script src="assets/js/modernizr.min.js"></script>
+        <script src="/assets/js/modernizr.min.js"></script>
 </head>
 
 
@@ -60,13 +56,10 @@
                             </button>
                         </li>
                         <li>
-                            <h4 class="page-title">DETAIL DATA TICKETING</h4>
+                            <h4 class="page-title">DAFTAR DATA TICKETING</h4>
                         </li>
                     </ul>
 
-                    <!-- Right(Notification and Searchbox -->
-                    @include('fix.right')
-                    <!-- End Notification bar -->
                 </div><!-- end container -->
             </div><!-- end navbar -->
         </div>
@@ -74,8 +67,9 @@
 
 
         <!-- ========== Left Sidebar Start ========== -->
-        @include('fix.sidebar')
+        @include('admin.sbadmin')
         <!-- Left Sidebar End -->
+
 
 
 
@@ -95,13 +89,13 @@
                             <div class="card-box table-responsive">
                                 <div class="clearfix">
                                     <div class="pull-left col-sm-offset-1">
-                                        <h4>BANK MANDIRI<br>
-                                            <strong>Jl. Sigura-gura 12A</strong>
+                                        <h4>{{@$data[0]['instance_name']}}<br>
+                                            <strong>{{@$data[0]['address']}}</strong>
                                         </h4>
                                     </div>
                                     <div class="pull-left col-sm-offset-4">
-                                        <h4>Kategori Instansi :
-                                            <strong>Industri</strong>
+                                        <h4>Kategori Aduan :
+                                            <strong>{{@$data[0]['name_components']}}</strong>
                                         </h4>
 
                                     </div>
@@ -111,15 +105,15 @@
                                     <div class="col-md-10 ">
                                         <div class="pull-left m-t-30 col-sm-offset-2">
                                             <p><strong>Tanggal Aduan </strong> </p>
-                                            <p>Jan 17, 2016</p><br>
+                                            <p>{{@$data[0]['date_created']}}</p><br>
                                         </div>
                                         <div class="pull-left m-t-30 col-sm-offset-2">
                                             <p><strong>No Ticket </strong> </p>
-                                            <p>172016</p><br>
+                                            <p>{{@$data[0]['no_ticketing']}}</p><br>
                                         </div>
                                         <div class="pull-left m-t-30 col-sm-offset-2">
                                             <p><strong>No Telepon Aduan</strong> </p>
-                                            <p>0812172016</p><br>
+                                            <p>081345655777</p><br>
                                         </div>
                                     </div><!-- end col -->
                                 </div>
@@ -128,21 +122,8 @@
                                     <div class="col-md-10 ">
                                         <div class="pull-left m-t-30 col-sm-offset-1">
                                             <h5 class="font-600 m-b-20 ">Isi Aduan</h5>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates,
-                                                illo, iste
-                                                itaque voluptas corrupti ratione reprehenderit magni similique? Tempore,
-                                                quos
-                                                delectus asperiores libero voluptas quod perferendis! Voluptate, quod
-                                                illo
-                                                rerum? Lorem ipsum dolor sit amet.
-                                            </p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates,
-                                                illo, iste
-                                                itaque voluptas corrupti ratione reprehenderit magni similique? Tempore,
-                                                quos
-                                                delectus asperiores libero voluptas quod perferendis! Voluptate, quod
-                                                illo
-                                                rerum? Lorem ipsum dolor sit amet.
+                                            <p>
+                                                {{@$data[0]['problem']}}
                                             </p>
                                         </div>
                                         <!-- <div class="pull-right m-t-30 col-sm-offset-2">
@@ -178,13 +159,17 @@
 
         @include('fix.footer')
 
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Right content here -->
-    <!-- ============================================================== -->
-    <!-- Right Sidebar -->
-    @include('fix.rightsb')
-    <!-- /Right-bar -->
+        </div>
+
+
+        <!-- ============================================================== -->
+        <!-- End Right content here -->
+        <!-- ============================================================== -->
+
+
+        <!-- Right Sidebar -->
+        @include('fix.rightsb')
+        <!-- /Right-bar -->
 
     </div>
     <!-- END wrapper -->
@@ -192,45 +177,45 @@
 
 
     <script>
-        var resizefunc = [];
+    var resizefunc = [];
     </script>
 
     <!-- jQuery  -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/detect.js"></script>
-    <script src="assets/js/fastclick.js"></script>
-    <script src="assets/js/jquery.slimscroll.js"></script>
-    <script src="assets/js/jquery.blockUI.js"></script>
-    <script src="assets/js/waves.js"></script>
-    <script src="assets/js/jquery.nicescroll.js"></script>
-    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/detect.js"></script>
+    <script src="/assets/js/fastclick.js"></script>
+    <script src="/assets/js/jquery.slimscroll.js"></script>
+    <script src="/assets/js/jquery.blockUI.js"></script>
+    <script src="/assets/js/waves.js"></script>
+    <script src="/assets/js/jquery.nicescroll.js"></script>
+    <script src="/assets/js/jquery.scrollTo.min.js"></script>
 
     <!-- Datatables-->
-    <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
-    <script src="assets/plugins/datatables/dataTables.buttons.min.js"></script>
-    <script src="assets/plugins/datatables/buttons.bootstrap.min.js"></script>
-    <script src="assets/plugins/datatables/jszip.min.js"></script>
-    <script src="assets/plugins/datatables/pdfmake.min.js"></script>
-    <script src="assets/plugins/datatables/vfs_fonts.js"></script>
-    <script src="assets/plugins/datatables/buttons.html5.min.js"></script>
-    <script src="assets/plugins/datatables/buttons.print.min.js"></script>
-    <script src="assets/plugins/datatables/dataTables.fixedHeader.min.js"></script>
-    <script src="assets/plugins/datatables/dataTables.keyTable.min.js"></script>
-    <script src="assets/plugins/datatables/dataTables.responsive.min.js"></script>
-    <script src="assets/plugins/datatables/responsive.bootstrap.min.js"></script>
-    <script src="assets/plugins/datatables/dataTables.scroller.min.js"></script>
+    <script src="/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/assets/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="/assets/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="/assets/plugins/datatables/buttons.bootstrap.min.js"></script>
+    <script src="/assets/plugins/datatables/jszip.min.js"></script>
+    <script src="/assets/plugins/datatables/pdfmake.min.js"></script>
+    <script src="/assets/plugins/datatables/vfs_fonts.js"></script>
+    <script src="/assets/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="/assets/plugins/datatables/buttons.print.min.js"></script>
+    <script src="/assets/plugins/datatables/dataTables.fixedHeader.min.js"></script>
+    <script src="/assets/plugins/datatables/dataTables.keyTable.min.js"></script>
+    <script src="/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="/assets/plugins/datatables/responsive.bootstrap.min.js"></script>
+    <script src="/assets/plugins/datatables/dataTables.scroller.min.js"></script>
 
     <!-- Datatable init js -->
-    <script src="assets/pages/datatables.init.js"></script>
+    <script src="/assets/pages/datatables.init.js"></script>
 
     <!-- App js -->
-    <script src="assets/js/jquery.core.js"></script>
-    <script src="assets/js/jquery.app.js"></script>
+    <script src="/assets/js/jquery.core.js"></script>
+    <script src="/assets/js/jquery.app.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function() {
+    $(document).ready(function() {
         $('#datatable').dataTable();
         $('#datatable-keytable').DataTable({
             keys: true

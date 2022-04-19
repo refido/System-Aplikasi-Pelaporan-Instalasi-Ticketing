@@ -70,7 +70,7 @@
 
 
         <!-- ========== Left Sidebar Start ========== -->
-        @include('fix.sidebar')
+        @include('teknisi.sbteknisi')
         <!-- Left Sidebar End -->
 
 
@@ -90,7 +90,8 @@
                                     width="100%">
                                     <thead>
                                         <tr>
-                                            <th>Leader Teknisi</th>
+                                        <th>Code</th>
+                                            <th>Kategori Instansi</th>
                                             <th>Nama Instansi</th>
                                             <th>Penanggung Jawab</th>
                                             <th>Tanggal Instalasi</th>
@@ -99,11 +100,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($data as $item) 
                                         <tr>
-                                            <td>Tiger</td>
-                                            <td>Singa</td>
-                                            <td>Sadewas</td>
-                                            <td>Edinburgh</td>
+                                        <td>{{@$item['code']}}</td>
+                                            <td>{{@$item['category_instansi']}}</td>
+                                            <td>Haruka Persada</td>
+                                            <td>{{@$item['pic_name']}}</td>
+                                            <td>{{@$item['date_instalation']}}</td>
                                             <td class="actions">
                                                 <a href="" class="btn btn-icon waves-effect waves-light btn-danger btn-xs m-b-5" data-toggle="modal" data-target="#dialog"> <i class="fa fa-tasks"></i> <span> Kerjakan</span></a>
                                             </td>
@@ -111,6 +114,7 @@
                                                 <a href="/detaildatalteknisi" class="btn btn-icon waves-effect waves-light btn-info btn-xs m-b-5"> <i class="fa fa-eye"></i> <span> Detail</span></a>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -124,8 +128,6 @@
             </div> <!-- content -->
 
             <!-- MODAL -->
-
-
             <div class="modal fade" id="dialog" tabindex="-1" aria-labelledby="dialog" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -141,8 +143,8 @@
                         <div class="row m-t-20">
                             <div class="modal-footer">
                                 <form action="">
-                                    <a href="#" type="button" class="btn btn-primary"> Iya</a>
-                                    <button id="dialogCancel" class="btn btn-default waves-effect">Tidak</button>
+                                    <a href="/formlapinteknisi" type="button" class="btn btn-primary"> Iya</a>
+                                    
                                 </form>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 <ul class="nav navbar-nav navbar-right">
     <li>
-        <!-- Notification -->
+        <!-- Notification
         <div class="notification-box">
             <ul class="list-inline m-b-0">
                 <li>
@@ -14,7 +14,7 @@
                 </li>
             </ul>
         </div>
-        <!-- End Notification bar -->
+        End Notification bar -->
     </li>
     <!--<li class="hidden-xs">
         <form role="search" class="app-search">
