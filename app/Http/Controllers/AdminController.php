@@ -15,14 +15,14 @@ class AdminController extends Controller
      */
 
     // AMBIL TOKEN YANG DIDAPAT SETELAH LOGIN (PAKE IMPLODE)
-    protected string $tokenku = 'Mgrcxzi60mZwy5m1EGffvH6Ece9l6FgM5eKANjT0';
-    protected string $tokenfix = 'Bearer ' . 'Mgrcxzi60mZwy5m1EGffvH6Ece9l6FgM5eKANjT0';
+    protected string $tokenku = 'HECCaVzAyws9BxGT8z0Fd2eyhENLf0BcZ175vZz1';
+    protected string $tokenfix = 'Bearer ' . 'HECCaVzAyws9BxGT8z0Fd2eyhENLf0BcZ175vZz1';
 
     public function index()
     {
         $response = Http::accept('application/json')->withHeaders([
             'Authorization' => $this->tokenfix
-        ])->get('https://www.nakulasadewa.com/restapi/public/api/admins');
+        ])->get('https://nakulasadewa.com/restapi/public/api/admins');
 
         $data = json_decode($response, true);
         return view('administrator/administrator', ['data' => $data]);
@@ -48,9 +48,10 @@ class AdminController extends Controller
     {
         $response = Http::accept('application/json')->withHeaders([
             'Authorization' => $this->tokenfix
-        ])->post('https://www.nakulasadewa.com/restapi/public/api/admins', [
+        ])->post('https://nakulasadewa.com/restapi/public/api/admins', [
             'name' => $request->name,
             'id_admin' => $request->id_admin,
+            'role' => $request->role,
             'no_tlpn' => $request->no_tlpn,
             'status' => $request->status
         ]);
@@ -79,11 +80,11 @@ class AdminController extends Controller
     {
         $response = Http::accept('application/json')->withHeaders([
             'Authorization' => $this->tokenfix
-        ])->get('https://www.nakulasadewa.com/restapi/public/api/admins/' . $id);
+        ])->get('https://nakulasadewa.com/restapi/public/api/admins/' . $id);
 
         $data = json_decode($response, true);
 
-        return view('administrator/editadministrator', ['data' => $data]);
+        return view('administrator.editadministrator', ['data' => $data]);
     }
 
     /**
@@ -97,9 +98,10 @@ class AdminController extends Controller
     {
         $response = Http::accept('application/json')->withHeaders([
             'Authorization' => $this->tokenfix
-        ])->put('https://www.nakulasadewa.com/restapi/public/api/admins/' . $id, [
+        ])->put('https://nakulasadewa.com/restapi/public/api/admins/' . $id, [
             'name' => $request->name,
             'id_admin' => $request->id_admin,
+            'role' => $request->role,
             'no_tlpn' => $request->no_tlpn,
             'status' => $request->status
         ]);
@@ -117,7 +119,7 @@ class AdminController extends Controller
     {
         $response = Http::accept('application/json')->withHeaders([
             'Authorization' => $this->tokenfix
-        ])->delete('https://www.nakulasadewa.com/restapi/public/api/admins/' . $id);
+        ])->delete('https://nakulasadewa.com/restapi/public/api/admins/' . $id);
 
         return redirect('/viewadmtr');
     }
