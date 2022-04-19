@@ -2,7 +2,8 @@
 
 Ini merupakan proyek yang kami kerjakan  selama program Magang Perguruan Tinggi pada CV Nakula Sadewa. Pada proyek ini yang pertama kami membuat aplikasi menggunakan Laravel untuk dapat membuat Pelaporan_Instalasi_API yang dapat menghubungkan pada proyek file android studio.
 
-File android terbagi menjadi 2 yaitu : android-api (yang merupakan web apinya dari file android), android merupakan file versi android studio
+File android terbagi menjadi 2 yaitu : android-api (yang merupakan web apinya dari file android), android merupakan file versi android studio. Untuk dapat menjalankan aplikasi dianjurkan mengaktifkan android-api versi web dengan file android versi android studio
+
 
 ## Table of contents
 
@@ -16,7 +17,7 @@ File android terbagi menjadi 2 yaitu : android-api (yang merupakan web apinya da
 ## Perangkat yang dibutuhkan
 1.	Laragon : untuk dapat mengaktifkan android-api yang dapat menghubungkan ke file versi android studio saat menjalankan aplikasi
 2.	Laravel 8
-3.	Vscode
+3.	Android Studio
 4.	Browser
 5.	Github
 6.  CMD 1
@@ -48,7 +49,7 @@ File android terbagi menjadi 2 yaitu : android-api (yang merupakan web apinya da
 
 6. Login aplikasi
 
-Untuk dapat menjalankan aplikasi dianjurkan mengaktifkan androi-api versi web dengan file android versi android studio
+Untuk dapat menjalankan aplikasi dianjurkan mengaktifkan android-api versi web dengan file android versi android studio
 
 ## Tampilan Sistem
 [(Back to top)](#table-of-contents)
