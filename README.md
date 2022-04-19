@@ -1,6 +1,6 @@
 ## SISTEM APLIKASI PELAPORAN INSTALASI & TICKETING BERBASIS ANDROID 
 
-Ini merupakan proyek yang kami kerjakan  selama program Magang Perguruan Tinggi pada CV Nakula Sadewa. Pada proyek ini yang pertama kami membuat aplikasi menggunakan Laravel untuk dapat membuat Pelaporan_Instalasi_API yang dapat menghubungkan pada proyek file android studio.
+Ini merupakan proyek yang kami kerjakan  selama program Magang Perguruan Tinggi pada CV Nakula Sadewa. Pada proyek ini yang pertama kami membuat aplikasi menggunakan Android Studio untuk dapat membuat pelaporan_instalasi_dan_tiketing_digital.
 
 File android terbagi menjadi 2 yaitu : android-api (yang merupakan web apinya dari file android), android merupakan file versi android studio. Untuk dapat menjalankan aplikasi dianjurkan mengaktifkan android-api versi web dengan file android versi android studio
 
