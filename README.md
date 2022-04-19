@@ -24,7 +24,7 @@ kami menggunakan BotMan dan Laravel Sanctum sebagai lib.
     composer require botman/driver-telegram
     ```
 
-4. Install library yang dibutuhkan dan mendapakat key
+4. Install library yang dibutuhkan dan mendapakan key
 
     ```json
     composer install
