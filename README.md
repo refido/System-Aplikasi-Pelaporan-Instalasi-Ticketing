@@ -4,8 +4,8 @@ Mengerjakan UI untuk web, mockup android dan mengconnectkan webservice dengan UI
 ## Table of contents
 
 - [Installation](#installation)
-- [Cara Penggunaan](#carapenggunaan)
-- [Tampilan](#tampilansistem)
+- [Penggunaan](#penggunaan)
+- [Tampilan](#tampilan)
 
 ## Installation
 [(Back to top)](#table-of-contents)
