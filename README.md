@@ -4,8 +4,8 @@ Mengerjakan UI untuk web, mockup android dan mengconnectkan webservice dengan UI
 ## Table of contents
 
 - [Installation](#installation)
-- [Penggunaan](#penggunaan)
-- [Tampilan](#tampilan)
+- [Cara Penggunaan](#cara-penggunaan-sistem)
+- [Tampilan](#tampilan-sistem)
 
 ## Installation
 [(Back to top)](#table-of-contents)
@@ -18,7 +18,7 @@ Mengerjakan UI untuk web, mockup android dan mengconnectkan webservice dengan UI
 5.	Github
 6.	Browser
 
-## Cara Instalasi Aplikasi Web
+## Cara Instalasi Web
 1.	Pastikan perangkat yang dibutuhkan telah tersedia dan sesuai. 
 2.	Clone project dengan git pada folder yang diinginkan. 
 3.	Buka project yang telah tersedia pada Vscode. 
@@ -26,7 +26,7 @@ Mengerjakan UI untuk web, mockup android dan mengconnectkan webservice dengan UI
 5.	Ketik perintah "composer update" 
 6.	Ketik perintah "php artisan key:generate" 
 
-## Cara Penggunaan Aplikasi
+## Cara Penggunaan Sistem
 [(Back to top)](#table-of-contents)
 1.	Buka Postman pilih Start Data Of Service dengan icon GET,
 2.	Masukkan link "https:nakulasadewa/api/admins/" untuk mengambil data.
