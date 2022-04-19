@@ -44,9 +44,7 @@ Route::get('/eduser', function () {
 //
 
 //admin
-Route::get('/viewdataladmin', function () {
-    return view('admin.datainstalasi');
-});
+Route::resource('/viewdataladmin', App\Http\Controllers\InstallationController::class);
 
 Route::get('/formdataladmin', function () {
     return view('admin.formdatal');
@@ -56,13 +54,15 @@ Route::get('/editdataladmin', function () {
     return view('admin.editdatal');
 });
 
+
 Route::get('/detaildataladmin', function () {
     return view('admin.detaildatal');
 });
 
-Route::get('/viewdatingadmin', function () {
-    return view('admin.dataticketing');
-});
+Route::resource('/viewdatingadmin', App\Http\Controllers\TicketingController::class);
+
+// Route::get('/detailtiketadmin/{id}', App\Http\Controllers\TicketingController::class, 'show');
+
 
 Route::get('/formdatingadmin', function () {
     return view('admin.formdating');
@@ -78,17 +78,15 @@ Route::get('/editdatingadmin', function () {
 //
 
 //teknisi
-Route::get('/viewdatalteknisi', function () {
-    return view('teknisi.instalasi');
-});
 
-Route::get('/detaildatalteknisi', function () {
-    return view('teknisi.detaildataltns');
-});
+//Route::resource('/viewdatalteknisi', App\Http\Controllers\ReportInstallationController::class);
 
-Route::get('/viewlapinteknisi', function () {
-    return view('teknisi.laporaninstalasi');
-});
+Route::get('/viewdatalteknisi', [App\Http\Controllers\InstallationController::class, 'indexteknisi']);
+
+
+Route::get('/detaildatalteknisi', [App\Http\Controllers\InstallationController::class, 'showteknisi']);
+
+Route::resource('/viewlapinteknisi', App\Http\Controllers\ReportInstallationController::class);
 
 Route::get('/formlapinteknisi', function () {
     return view('teknisi.formlapin');
@@ -98,9 +96,8 @@ Route::get('/detaillapinteknisi', function () {
     return view('teknisi.detaillapin');
 });
 
-Route::get('/viewtiketteknisi', function () {
-    return view('teknisi.ticketting');
-});
+Route::get('/viewtiketteknisi', [App\Http\Controllers\TicketingController::class, 'indexteknisi']);
+
 
 Route::get('/detailtiketteknisi', function () {
     return view('teknisi.detailticketting');
@@ -110,15 +107,15 @@ Route::get('/formtiketteknisi', function () {
     return view('teknisi.formticketting');
 });
 
-Route::get('/viewriwayat', function () {
-    return view('teknisi.riwayat');
-});
+Route::resource('/viewriwayat', App\Http\Controllers\TicketSolveController::class);
+// Route::get('/viewriwayat', function () {
+//     return view('teknisi.riwayat');
+// });
 //
 
 //programmer
-Route::get('/viewlapinprogrammer', function () {
-    return view('programmer.datapenginstalan');
-});
+
+Route::get('/viewlapinprogrammer', [App\Http\Controllers\ReportInstallationController::class, 'indexlapinprog']);
 
 Route::get('/detaillapinprogrammer', function () {
     return view('programmer.detaillapin');
@@ -126,17 +123,14 @@ Route::get('/detaillapinprogrammer', function () {
 //
 
 //manager
-Route::get('/viewlapinmanager', function () {
-    return view('manager.datapenginstalan');
-});
+
+Route::get('/viewlapinmanager', [App\Http\Controllers\ReportInstallationController::class, 'indexmnj']);
 
 Route::get('/detaillapinmanager', function () {
     return view('manager.detaillapin');
 });
 
-Route::get('/viewlaptickmanager', function () {
-    return view('manager.lapticketing');
-});
+Route::get('/viewlaptickmanager', [App\Http\Controllers\TicketingController::class, 'indexmnj']);
 
 Route::get('/detaillaptickmanager', function () {
     return view('manager.detailticketingmnj');

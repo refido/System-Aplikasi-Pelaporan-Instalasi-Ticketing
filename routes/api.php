@@ -34,12 +34,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::resource('managers', App\Http\Controllers\APIController\ManagerController::class);
     Route::resource('programmers', App\Http\Controllers\APIController\ProgrammerController::class);
-    Route::resource('reportinstallations', App\Http\Controllers\APIController\ReportInstallationController::class);
+    Route::resource('report_installations', App\Http\Controllers\APIController\ReportInstallationController::class);
     Route::resource('reportphotos', App\Http\Controllers\APIController\ReportPhotoController::class);
 
     Route::resource('technicians', App\Http\Controllers\APIController\TechnicianController::class);
     Route::resource('technician_instances', App\Http\Controllers\APIController\TechnicianInstanceController::class);
     Route::resource('ticketings', App\Http\Controllers\APIController\TicketingController::class);
+    Route::resource('ticketsolves', App\Http\Controllers\APIController\TicketSolveController::class);
 
     Route::resource('categories', App\Http\Controllers\APIController\CategorieController::class);
     Route::resource('components', App\Http\Controllers\APIController\ComponentController::class);
